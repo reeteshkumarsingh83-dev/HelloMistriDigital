@@ -15,3 +15,18 @@
 	height: 40px;
 	width: 80px;
 }
+
+.category_icon{
+	text-align: center;
+}
+.category_icon .img{
+   	height: 200px;
+	width: 300px;
+	border: 1px solid #000;
+}
+#iconImage{
+	height: 200px;
+	width: 200px;
+	border: 1px solid #000;
+	border-radius: 5px;
+}

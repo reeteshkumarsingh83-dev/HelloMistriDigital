@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 /*
@@ -50,6 +51,13 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/website/banner-edit/{id}',[ConfigrationSettingController::class,'BannerEdit'])->name('admin.banner-edit');
         Route::post('/website/banner-update',[ConfigrationSettingController::class,'BannerUpdate'])->name('admin.banner-update');
         Route::get('/website/banner-delete/{id}',[ConfigrationSettingController::class,'BannerDelete'])->name('admin.banner-delete');
+
+        // category section
+
+        Route::get('/category',[CategoryController::class,'category'])->name('admin.category');
+        Route::post('/category',[CategoryController::class,'categorySave'])->name('admin.category-save');
+        Route::get('/sub-category',[CategoryController::class,'Subcategory'])->name('admin.sub-category');
+        Route::post('/sub-category',[CategoryController::class,'SubcategorySave'])->name('admin.sub-category-save');
     });
 });
 
