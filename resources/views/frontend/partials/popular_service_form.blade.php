@@ -22,7 +22,7 @@
             <div class="aon-why-choose-info">
               <!--Title Section Start-->
               <div class="section-head">
-                <h2 class="sf-title">Best extended warranty plans for your Category Service Name</h2>
+                <h2 class="sf-title">Best extended warranty plans for your {{ $category->name }}</h2>
               </div>
               <!--Title Section Start End-->
               <ul class="aon-why-choose-steps list-unstyled">
@@ -52,7 +52,7 @@
              <div class="sf-contact-form-wrap">
           <!--Contact Information-->
           <div class="sf-contact-form service_card_form card">
-            <form class="" method="POST" action="{{ route('service-post') }}">
+            <form class="" method="POST" action="{{ route('web-post-service') }}">
             	<div class="sf-con-form-title text-center">
 	              <h4 class="m-b30">Find plans for your device</h4>
 	            </div>
@@ -62,7 +62,12 @@
                 <div class="col-md-12">
                   <div class="form-group">
                   	<label class=""> Device Brand</label>
-                    <input type="text" name="brand" placeholder="Select Brand" class="form-control">
+                    <select class="form-select form-control" aria-label="Default select example" name="brand">
+                        <option value="0">--Select--</option>
+                        @foreach($brands as $brand) 
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                        @endforeach
+                      </select>
                   </div>
                 </div>
                 <!-- COLUMNS 2 -->

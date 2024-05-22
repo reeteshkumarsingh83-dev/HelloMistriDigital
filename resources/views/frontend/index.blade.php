@@ -108,19 +108,20 @@
       <div class="section-content">
         <div class="aon-categories-area2-section">
           <div class="row justify-content-center">
+           @foreach(categories() as $category)
             <div class="col-lg-4 col-md-6" >
               <div class="media-bg-animate mba-bdr-15">
                 <div class="aon-categories-area2-iconbox aon-icon-effect">
                   <div class="aon-cate-area2-icon">
                     <span>
                       <i class="aon-icon">
-                        <img src="{{ asset('images/categories/catg3.png') }}" alt="">
+                        <img src="{{ get_upload_image('categories/'.$category->icon) }}" alt="">
                       </i>
                     </span>
                   </div>
                   <div class="aon-cate-area2-content px-2">
                     <h5 class="aon-tilte">
-                      <a href="{{ route('service') }}">AC Repair & Service</a>
+                      <a href="{{ route('web.catg-service',$category->slug) }}">{{ $category->name }}</a>
                     </h5>
                     <p>
                       <small>
@@ -134,214 +135,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6" >
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/teli.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a href="{{ route('service') }}">Television Extended Warranty</a>
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>958 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/Refrigerator.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a href="{{ route('service') }}">Refrigerator Extended Warranty</a>
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>558 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" >
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/Purifier.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a href="{{ route('service') }}">Water Purifier Repair & Service</a>
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>958 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" >
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/cooling_cooler.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a href="{{ route('service') }}"> Room Cooler Extended Warranty</a>
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>558 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" >
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/washing_machine.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                     <a href="{{ route('service') }}">Washing Machine Extended Warranty</a>
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>458 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" >
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/mobile.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a></a> Mobile Extended Warranty
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>458 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/laptop.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a></a> Laptop Complete Care
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>458 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6" >
-              <div class="media-bg-animate mba-bdr-15">
-                <div class="aon-categories-area2-iconbox aon-icon-effect">
-                  <div class="aon-cate-area2-icon">
-                    <span>
-                      <i class="aon-icon">
-                        <img src="{{ asset('images/categories/microwave.png') }}" alt="">
-                      </i>
-                    </span>
-                  </div>
-                  <div class="aon-cate-area2-content px-2">
-                    <h5 class="aon-tilte">
-                      <a></a> Microwave Extended Warranty
-                    </h5>
-                    <p>
-                      <small>
-                        <span class="rating fa fa-star"></span> &nbsp; (reviews) </small>
-                    </p>
-                    <p>
-                      <small>from <b>458 </b>
-                      </small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
           </div>
           <div class="aon-btn-pos-center">
             <a class="site-button" href="">View All</a>
@@ -367,31 +161,7 @@
       <div class="section-content">
         <div class="owl-carousel aon-vendor-provider-two-carousel aon-owl-arrow">
           <!-- COLUMNS 1 -->
-          <div class="item">
-            <div class="aon-ow-provider-wrap2">
-              <div class="aon-ow-provider2 shine-hover">
-                <div class="aon-ow-top">
-                  <div class="aon-pro-check">
-                    <span>
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                  <!-- <div class="aon-pro-favorite"><a href="#"><i class="fa fa-heart-o"></i></a></div> -->
-                </div>
-                <div class="aon-ow-mid">
-                  <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
-                      <img src="{{ asset('images/jobs/water_filter.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
-                    </a>
-                  </div>
-                  <p>Water Purifier</p>
-                  <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
           <div class="item">
             <div class="aon-ow-provider-wrap2">
               <div class="aon-ow-provider2 shine-hover">
@@ -404,133 +174,13 @@
                 </div>
                 <div class="aon-ow-mid">
                   <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
-                      <img src="{{ asset('images/jobs/printer.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
-                    </a>
-                  </div>
-                  <p>Printer</p>
-                  <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="aon-ow-provider-wrap2">
-              <div class="aon-ow-provider2 shine-hover">
-                <div class="aon-ow-top">
-                  <div class="aon-pro-check">
-                    <span>
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="aon-ow-mid">
-                  <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
-                      <img src="{{ asset('images/jobs/refrigerator.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
-                    </a>
-                  </div>
-                  <p>Refrigerator</p>
-                  <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="aon-ow-provider-wrap2">
-              <div class="aon-ow-provider2 shine-hover">
-                <div class="aon-ow-top">
-                  <div class="aon-pro-check">
-                    <span>
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="aon-ow-mid">
-                  <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
-                      <img src="{{ asset('images/jobs/ac_repair1.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
-                    </a>
-                  </div>
-                  <p>Air Conditioner</p>
-                  <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="aon-ow-provider-wrap2">
-              <div class="aon-ow-provider2 shine-hover">
-                <div class="aon-ow-top">
-                  <div class="aon-pro-check">
-                    <span>
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="aon-ow-mid">
-                  <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
-                      <img src="{{ asset('images/jobs/mobile.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
-                    </a>
-                  </div>
-                  <p>Mobile</p>
-                  <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="aon-ow-provider-wrap2">
-              <div class="aon-ow-provider2 shine-hover">
-                <div class="aon-ow-top">
-                  <div class="aon-pro-check">
-                    <span>
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="aon-ow-mid">
-                  <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
-                      <img src="{{ asset('images/jobs/washing_machine.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
-                    </a>
-                  </div>
-                  <p>Washing Machine</p>
-                  <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="aon-ow-provider-wrap2">
-              <div class="aon-ow-provider2 shine-hover">
-                <div class="aon-ow-top">
-                  <div class="aon-pro-check">
-                    <span>
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-                <div class="aon-ow-mid">
-                  <div class="aon-ow-media media-bg-animate">
-                    <a class="shine-box" href="{{ route('service') }}">
+                    <a class="shine-box" href="">
                       <img src="{{ asset('images/jobs/microwave.jpg') }}" alt="" style=" min-height:180px; max-height: 180px; ">
                     </a>
                   </div>
                   <p>Microwave</p>
                   <div class="aon-ow-bottom">
-                    <a href="{{ route('service') }}" class="site-button">View Services</a>
+                    <a href="" class="site-button">View Services</a>
                   </div>
                 </div>
               </div>

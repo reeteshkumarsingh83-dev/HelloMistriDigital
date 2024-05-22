@@ -22,7 +22,7 @@
           <!-- COLUMNS LEFT -->
           <div class="col-lg-4 col-md-12">
               <div class="sf-contact-form service_card_form card">
-                <form class="" method="POST" action="{{ route('service-post') }}">
+                <form class="" method="POST" action="">
                   <div class="sf-con-form-title text-center">
                     <h4 class="m-b30">ONEASSIST EXTENDED WARRANTY SERVICE FOR LAPTOP</h4>
                   </div> @csrf 
@@ -53,7 +53,7 @@
           </div>
            <div class="col-lg-4 col-md-12">
               <div class="sf-contact-form service_card_form card">
-                <form class="" method="POST" action="{{ route('service-post') }}">
+                <form class="" method="POST" action="{{ route('web-post-service') }}">
                   <div class="sf-con-form-title text-center">
                     <h4 class="m-b30">ONEASSIST 1YR EXTENDED WARRANTY SERVICE FOR LAPTOP</h4>
                   </div>
@@ -86,7 +86,7 @@
           <!-- COLUMNS RIGHT -->
           <div class="col-lg-4 col-md-12">
               <div class="sf-contact-form service_card_form card">
-                <form class="" method="POST" action="{{ route('service-post') }}">
+                <form class="" method="POST" action="{{ route('web-post-service') }}">
                   <div class="sf-con-form-title text-center">
                     <h4 class="m-b30">ONEASSIST 2YR EXTENDED WARRANTY SERVICE FOR LAPTOP</h4>
                   </div> 

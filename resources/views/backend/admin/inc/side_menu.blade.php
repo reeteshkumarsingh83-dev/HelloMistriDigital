@@ -154,7 +154,27 @@
            <div class="collapse menu-dropdown" id="sidebarservice">
              <ul class="nav nav-sm flex-column">
                <li class="nav-item">
-                 <a href="layouts-horizontal.html" class="nav-link" data-key="t-horizontal">Service List</a>
+                 <a href="{{ route('admin.service-list') }}" class="nav-link" data-key="t-horizontal">List</a>
+               </li>
+               <li class="nav-item">
+                 <a href="{{ route('admin.add-new-service') }}" class="nav-link" data-key="t-horizontal">Add New</a>
+               </li>
+             </ul>
+           </div>
+         </li>
+
+         <li class="nav-item">
+           <a class="nav-link menu-link" href="#sidebarbrands" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarbrands">
+             <i class="ri-layout-3-line"></i>
+             <span data-key="t-layouts">Brands</span>
+           </a>
+           <div class="collapse menu-dropdown" id="sidebarbrands">
+             <ul class="nav nav-sm flex-column">
+               <li class="nav-item">
+                 <a href="{{ route('admin.add-new-brand') }}" class="nav-link" data-key="t-horizontal">Add New</a>
+               </li>
+               <li class="nav-item">
+                 <a href="{{ route('admin.brand-list') }}" class="nav-link" data-key="t-horizontal">List</a>
                </li>
              </ul>
            </div>

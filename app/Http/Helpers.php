@@ -1,6 +1,7 @@
 <?php
 use App\Models\Setting; 
 use App\Models\Page;
+use App\Models\Category;
 
   if (!function_exists('get_setting')) {
     function get_setting($key)
@@ -43,6 +44,11 @@ use App\Models\Page;
             return $page;
         }
        }
-
   }
+
+    function categories()
+     {
+        $categories = Category::orderBy('id', 'asc')->get();
+        return $categories;
+     }
 ?>

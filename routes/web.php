@@ -7,6 +7,7 @@ use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Vendor\VendorController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,25 +20,12 @@ use App\Http\Controllers\Vendor\VendorController;
 |
 */
 
-
-Route::group(['prefix' => 'vendor'], function() {
-    Route::group(['middleware' => 'vendor.guest'], function(){
-      Route::get('/login', [VendorController::class, 'getLogin'])->name('vendorLogin');
-      Route::post('/login', [VendorController::class, 'postLogin'])->name('vendorLoginPost');
-    });
-    
-    Route::group(['middleware' => 'vendor.auth'], function(){
-        Route::get('/dashboard', [VendorController::class, 'index'])->name('vendor.dashboard');
-        Route::post('/logout', [VendorController::class, 'logout'])->name('vendor.logout');
-
-    });
-});
-
+// home page 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::get('/home', [HomeController::class, 'home_index'])->name('home_index');
 
+// login and registration
 Auth::routes();
-
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login-succes', [UserController::class, 'loginSave'])->name('login-save');
 Route::get('/register', [UserController::class, 'register'])->name('register');
@@ -47,14 +35,15 @@ Route::post('/register', [UserController::class, 'registerSave'])->name('registe
 // page route 
 Route::get('page/contact', [PageController::class, 'contact'])->name('contact');
 Route::post('page/contact-save', [PageController::class, 'contactSave'])->name('contact-save');
-
 Route::get('page/about-us', [PageController::class, 'about'])->name('about');
-
 Route::get('page/{slug}',[PageController::class, 'SlugPage'])->name('slug-page');
 
-Route::get('/service', [HomeController::class, 'service'])->name('service');
-Route::post('/service-post', [HomeController::class, 'servicePost'])->name('service-post');
-Route::get('/service-purches', [HomeController::class, 'servicePurches'])->name('service-purches');
+// category services
+Route::get('/catg/{slug}', [ServiceController::class, 'CatgService'])->name('web.catg-service');
+Route::post('/catg-post', [ServiceController::class, 'catgServicePost'])->name('web-post-service');
+Route::get('/catg-purches', [ServiceController::class, 'catgServicePurches'])->name('web-purches-service');
+
+// Brand 
 
 
 

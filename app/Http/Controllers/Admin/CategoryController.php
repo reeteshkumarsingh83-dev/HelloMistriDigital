@@ -19,7 +19,7 @@ class CategoryController extends Controller
        $validator  = Validator::make($request->all(),[
           'name'           => 'required',
           'priority_number'=> 'required',
-          'icon'           => 'required|mimes:jpeg,jpg,png,gif|max:500',
+          'icon'           => 'required|mimes:jpeg,jpg,png,gif|max:200',
         ]);
         if($validator->fails()){
             return back()
@@ -53,7 +53,7 @@ class CategoryController extends Controller
        $validator  = Validator::make($request->all(),[
           'name'           => 'required',
           'priority_number'=> 'required',
-          'icon'           => 'required|mimes:jpeg,jpg,png,gif|max:500',
+          'icon'           => 'required|mimes:jpeg,jpg,png,gif|max:200',
         ]);
         if($validator->fails()){
             return back()

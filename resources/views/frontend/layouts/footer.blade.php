@@ -55,22 +55,22 @@
             <h4 class="sf-f-title">Warranty Check</h4>
             <ul>
               <li>
-                <a href="{{ route('service') }}">Apple Warranty Check</a>
+                <a href="">Apple Warranty Check</a>
               </li>
               <li>
-                <a href="{{ route('service') }}">Lenovo Warranty Check</a>
+                <a href="">Lenovo Warranty Check</a>
               </li>
               <li>
-                <a href="{{ route('service') }}">Samsung Warranty Check</a>
+                <a href="">Samsung Warranty Check</a>
               </li>
               <li>
-                <a href="{{ route('service') }}">Iphone Warranty Check</a>
+                <a href="">Iphone Warranty Check</a>
               </li>
               <li>
-                <a href="{{ route('service') }}">Dell Warranty Check</a>
+                <a href="">Dell Warranty Check</a>
               </li>
               <li>
-                <a href="{{ route('service') }}">Sony Warranty Check</a>
+                <a href="">Sony Warranty Check</a>
               </li>
             </ul>
           </div>

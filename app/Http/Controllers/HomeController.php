@@ -55,15 +55,5 @@ class HomeController extends Controller
         return response()->json(['updatedAmount' => $updatedAmount]);
         }
 
-    public function service(){
-        return view('frontend.partials.popular_service_form');
-    }
 
-    public function servicePost(Request $request){
-     return redirect()->route('service-purches');
-    }
-
-    public function servicePurches(){
-        return view('frontend.partials.popular_service_purchase');
-    }
 }

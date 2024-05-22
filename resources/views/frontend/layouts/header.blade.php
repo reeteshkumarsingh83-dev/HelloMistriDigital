@@ -54,84 +54,19 @@
                     <a href="javascript:;">Device & Plans</a>
                     <ul class="sub-menu sub-menu-big">
                       <div class="row">
+                        @foreach(categories() as $category)
                         <div class="col-lg-3">
                           <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
+                            <a style="padding: 0px 20px; color: red; font-weight: bold" >{{ $category->name }}</a>
+                            <a href="{{ route('web.catg-service',$category->slug) }}" style="padding-bottom: 10px;">Extended Warranty</a>
                           </li>
                         </div>
-                        <div class="col-lg-3">
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                        </div>
-                        <div class="col-lg-3">
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                        </div>
-                        <div class="col-lg-3">
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                          <li>
-                            <a href="">Air Conditioner</a>
-                          </li>
-                        </div>
+                        @endforeach
                       </div>
                     </ul>
                   </li>
                   <li class="has-child">
                     <a href="javascript:;">Home Protection</a>
-                    <ul class="sub-menu" style="border-radius:5px">
-                      <li>
-                        <a href="">View more...</a>
-                      </li>
-                    </ul>
                   </li>
                   <!-- <li>
                     <a href="blog.php">Activate Plan</a>
