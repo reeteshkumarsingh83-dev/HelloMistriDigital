@@ -11,6 +11,10 @@
 	     border: 2px solid #c2c8d7; 
 	     height: 50px;
 	}
+  .best_service_plan{
+    padding: 30px 18px 30px 18px;
+  }
+
 </style>
 <div class="page-content">
   <section class="aon-why-choose2-area" style="background-image: url({{ asset('images/download.png') }}); background-repeat: no-repeat;">
@@ -97,6 +101,53 @@
       </div>
     </div>
   </section>
+  <section>
+    <div class="page-content">
+  <section class="aon-why-choose2-area" style="background-image: url({{ asset('images/download.png') }}); background-repeat: no-repeat;">
+    <div class="container">
+      <div class="aon-why-choose2-box">
+        <h2 class="pb-3 text-center">Let's find you the best plan</h2>
+        <div class="row">
+        @foreach($services as $service)
+        @php
+            $slug = Request::segment(2).'-'.$service->slug;
+         @endphp
+          <div class="col-lg-4 col-md-12">
+            <form method="POST" action="{{ route('web.extended-service',$slug) }}">
+              @csrf
+              <input type="hidden" name="service_slug" value="{{ $service->slug }}">
+              <input type="hidden" name="category_slug" value="{{ Request::segment(2) }}">
+              <div class="sf-contact-form service_card_form card best_service_plan">
+                  <div class="sf-con-form-title ">
+                    <h4 class="m-b30">{{ $service->name }} </h4>
+                  </div>
+                  <ul class="aon-why-choose-steps list-unstyled subscriptions_ul">
+                  <!-- COLUMNS 1 -->
+                  <li class="d-flex">
+                      <span><i class="fa-solid fa-check-circle"></i> Pickup and Drop services for claim processing</span>
+                  </li>
+                  <!-- COLUMNS 2 -->
+                  <li class="d-flex">
+                      <span><i class="fa-solid fa-check-circle"></i> Extended warranty plans start at only ₹ 3/day*</span>
+                  </li>
+                  <!-- COLUMNS 3 -->
+                  <li class="d-flex">
+                      <span><i class="fa-solid fa-check-circle"></i> 100% best-in-class service. 0% hassle</span>
+                  </li>
+                </ul>
+                  <div class="sf-contact-submit-btn"><button class="site-button" type="submit">Know More</button>
+                  </div>
+              </div>
+              </form>
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Content END--> 
+  </section>
+
 <section class="aon-why-choose2-area">
     <div class="container">
       <div class="aon-why-choose2-box">
@@ -106,7 +157,7 @@
             <div class="aon-why-choose-info">
               <!--Title Section Start-->
               <div class="section-head">
-                <h2 class="sf-title">OneAssist Service Promise</h2>
+                <h2 class="sf-title">Hello Mistry Service Promise</h2>
               </div>
               <!--Title Section Start End-->
               <ul class="aon-why-choose-steps list-unstyled">
@@ -166,7 +217,7 @@
           </div>
           <!-- COLUMNS RIGHT -->
           <div class="col-lg-6 col-md-12">
-            <img src="{{ asset('images/banner2/_laptop-image.png') }}" alt="">
+            <img src="{{ get_upload_image('categories/'.$category->banner) ?? ''}}" alt="">
           </div>
         </div>
       </div>

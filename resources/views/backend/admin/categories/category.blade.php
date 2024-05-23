@@ -78,6 +78,26 @@
                         </div>
                       </div>
                     </div>
+
+                    <div class="col-xxl-4 col-md-4 col-12">
+                      <div class="">
+                        <label for="valueInput" class="form-label">Banner</label>
+                        <input type="file" class="form-control" name="banner" id="imputImage">
+                        @error('image')
+                             <small class="form-text text-danger">{{ $message }}</small>
+                         @enderror
+                      </div>
+                    </div>
+
+                    <div class="col-xxl-12 col-md-12 col-12">
+                      <div class="category_icon">
+                        <label for="valueInput" class="form-label">Banner</label>
+                        <div class="image_box py-2">
+                          <img  src="" class="img-fluid" alt="" id="bannerImage"  onerror="this.src='{{ asset("images/img2.jpg") }}'">
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                   <button class="btn btn-sm bg-success mt-2">Create</button>
                 </div>
@@ -114,6 +134,7 @@
                                                 <th scope="col">NAME</th>
                                                 <th scope="col">SLUG</th>
                                                 <th scope="col">ICON</th>
+                                                <th scope="col">BANNER</th>
                                                 <th scope="col">PRIORITY</th>
                                                 <th scope="col">STATUS</th>
                                                 <th scope="col">ACTION</th>
@@ -130,6 +151,9 @@
                                                 <td><i class="ri-checkbox-circle-line align-middle text-success"></i> 
                                                 <img src="{{ get_upload_image('categories/'.$category->icon) ?? ''}}" class="get_upload_image" alt="image">
                                                 </td>
+                                                <td><i class="ri-checkbox-circle-line align-middle text-success"></i> 
+                                                <img src="{{ get_upload_image('categories/'.$category->banner) ?? ''}}" class="get_upload_image" alt="image">
+                                                </td>
                                                 <td>{{ $category->priority_number }}</td>
                                                 <td>
                                                     <div class="form-check form-switch">
@@ -138,7 +162,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="hstack gap-3 flex-wrap">
-                                                        <a href="{{ route('admin.edit-page',$category->id) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
+                                                        <a href="{{ route('admin.category-edit',$category->id) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
                                                         <a href="javascript:void(0);" class="link-danger fs-15"><i class="ri-delete-bin-line" onclick="PageDelete({{$category->id}})"></i></a>
                                                     </div>
                                                 </td>
@@ -194,6 +218,14 @@
 	    iconImage.src = URL.createObjectURL(file)
 	  }
 	}
+</script>
+<script>
+    imputImage.onchange = evt => {
+      const [file] = imputImage.files
+      if (file) {
+        bannerImage.src = URL.createObjectURL(file)
+      }
+    }
 </script>
 
 @endsection

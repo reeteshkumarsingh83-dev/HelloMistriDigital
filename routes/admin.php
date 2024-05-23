@@ -57,8 +57,12 @@ Route::group(['middleware' => 'admin.auth'], function(){
     // category section
     Route::get('/category',[CategoryController::class,'category'])->name('admin.category');
     Route::post('/category',[CategoryController::class,'categorySave'])->name('admin.category-save');
+    Route::get('/category-edit/{id}',[CategoryController::class,'categoryEdit'])->name('admin.category-edit');
+    Route::post('/category-update',[CategoryController::class,'categoryUpdate'])->name('admin.category-update');
+
     Route::get('/sub-category',[CategoryController::class,'Subcategory'])->name('admin.sub-category');
     Route::post('/sub-category',[CategoryController::class,'SubcategorySave'])->name('admin.sub-category-save');
+
    
     // Brand 
     Route::get('/brands',[BrandController::class,'brand'])->name('admin.brand-list');
@@ -66,7 +70,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::post('/save-brand',[BrandController::class,'save'])->name('admin.save-brand');
     Route::get('/edit/brand/{id}',[BrandController::class,'edit'])->name('admin.edit-brand');
     Route::post('/update/brand',[BrandController::class,'update'])->name('admin.update-brand');
-    Route::get('brand/delete/{id}',[BrandController::class,'delete'])->name('admin.delete-brand');
+    Route::get('/brand/delete/{id}',[BrandController::class,'delete'])->name('admin.delete-brand');
 
     // services
     Route::get('/service',[ServiceController::class,'service'])->name('admin.service-list');
@@ -74,6 +78,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::post('/save-service',[ServiceController::class,'save'])->name('admin.save-service');
     Route::get('/edit-service/{id}',[ServiceController::class,'edit'])->name('admin.edit-service');
     Route::post('/update-service',[ServiceController::class,'update'])->name('admin.update-service');
+    Route::get('/service/delete/{id}',[ServiceController::class,'delete'])->name('admin.delete-service');
 
 
    });

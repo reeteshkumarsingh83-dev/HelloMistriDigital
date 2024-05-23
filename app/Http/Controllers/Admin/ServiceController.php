@@ -50,7 +50,33 @@ class ServiceController extends Controller
     }
 
     public function update(Request $request){
-dd($request->all());
+       $validator  = Validator::make($request->all(),[
+          'name'           => 'required',
+          'description'     => 'required',
+          'image'           => 'sometimes|mimes:jpeg,jpg,png,gif|max:200',
+        ]);
+        if($validator->fails()){
+            return back()
+                    ->withErrors($validator)
+                    ->withInput();
+        } 
+        $service   =   Service::where('id',$request->service_id)->first();
+        $service->name               =     $request->name;
+        $service->slug               =     $this->make_slug($request->name);
+        $service->description        =     $request->description;
+        $image = $request->image;
+        if($image){
+              $fileName       = time()."-hello-mistri-digital." .$request->file('image')->getClientOriginalExtension();
+              $image_path     = $image->move(public_path('admin_assets/images/services'), $fileName);
+              $service->image   = $fileName;
+        } 
+        $service->save();
+        return redirect()->route('admin.service-list');
+    }
+
+    public function delete($id){
+        Service::destroy($id);
+        return response()->json(['message'=> 'Data delete succesfully']); 
     }
 
     private function make_slug($string){

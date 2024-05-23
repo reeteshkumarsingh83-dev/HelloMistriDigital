@@ -84,7 +84,7 @@
         .then((willDelete) => {
             if (willDelete) {
                  $.ajax({
-                    url : "brand/delete/"+id,
+                    url : "service/delete/"+id,
                     type : "GET",
                     data:{
                         _token : $("input[name=_token]").val(),

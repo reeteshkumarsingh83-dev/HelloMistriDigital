@@ -38,6 +38,50 @@ class CategoryController extends Controller
               $image_path     = $icon->move(public_path('admin_assets/images/categories'), $fileName);
               $categories->icon   = $fileName;
         } 
+        $banner = $request->banner;
+        if($banner){
+              $fileName       = time()."-hello-mistri-digital." .$request->file('banner')->getClientOriginalExtension();
+              $image_path     = $banner->move(public_path('admin_assets/images/categories'), $fileName);
+              $categories->banner   = $fileName;
+        } 
+        $categories->save();
+        return back();
+    }
+
+    public function categoryEdit($id){
+        $category  = Category::where('id',$id)->first();
+        return view('backend.admin.categories.edit',compact('category'));
+    }
+
+    public function categoryUpdate(Request $request){
+       $validator  = Validator::make($request->all(),[
+          'name'           => 'required',
+          'icon'           => 'sometimes|mimes:jpeg,jpg,png,gif|max:200',
+          'banner'         => 'sometimes|mimes:jpeg,jpg,png,gif|max:200',
+        ]);
+        if($validator->fails()){
+            return back()
+                    ->withErrors($validator)
+                    ->withInput();
+        } 
+        $categories   =  Category::where('id',$request->category_id)->first();
+        $categories->name               =     $request->name;
+        $categories->priority_number    =     $request->priority_number;
+        $categories->slug               =     $this->make_slug($request->name);
+        $categories->parent_id          =     0;
+        $categories->position           =     0;
+        $icon = $request->icon;
+        if($icon){
+              $fileName       = time()."-hello-mistri-digital." .$request->file('icon')->getClientOriginalExtension();
+              $image_path     = $icon->move(public_path('admin_assets/images/categories'), $fileName);
+              $categories->icon   = $fileName;
+        } 
+        $banner = $request->banner;
+        if($banner){
+              $fileName       = time()."-hello-mistri-digital." .$request->file('banner')->getClientOriginalExtension();
+              $image_path     = $banner->move(public_path('admin_assets/images/categories'), $fileName);
+              $categories->banner   = $fileName;
+        } 
         $categories->save();
         return back();
     }
