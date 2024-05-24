@@ -9,6 +9,7 @@ use App\Models\Banner;
 use Validator;
 use Storage;
 use Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ConfigrationSettingController extends Controller
 {
@@ -97,6 +98,7 @@ class ConfigrationSettingController extends Controller
         $company_copy_right            =  Setting::where('type','company_copy_right')->first();
         $company_copy_right->value  = $request->company_copy_right;
         $company_copy_right->save();
+        Toastr::success('Setting Update Succesfully!');
         return back();
 
     }
@@ -134,6 +136,7 @@ class ConfigrationSettingController extends Controller
 
         }
         $banner->save();
+        Toastr::success('Banner add succesfully!');
         return back();
 
     }
@@ -166,12 +169,13 @@ class ConfigrationSettingController extends Controller
 
         }
         $banner->save();
+        Toastr::success('Banner update succesfully!');
         return redirect()->route('admin.banner');
     }
 
     public function BannerDelete($id){
         Banner::destroy($id);
-        return response()->json(['message'=> 'Data delete succesfully']); 
+        return response()->json(); 
     }
 
     public function BannerStatus(Request $request){

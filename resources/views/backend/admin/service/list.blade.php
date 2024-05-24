@@ -90,6 +90,7 @@
                         _token : $("input[name=_token]").val(),
                     },
                     success:function(respone){
+                        toastr.success('Service deleted successfully');
                         $('#uid'+id).remove();
                     }
                 });
@@ -128,9 +129,9 @@
             },
             success: function (data) {
                 if (data == 1) {
-                   
+                   toastr.success('Service status update successfully');
                 } else {
-                    
+                    toastr.success('Service status update successfully');
                 }
             }
         });

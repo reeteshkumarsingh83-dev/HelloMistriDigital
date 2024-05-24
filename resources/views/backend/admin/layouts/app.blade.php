@@ -29,6 +29,7 @@
     <!-- Filepond css -->
     <link rel="stylesheet" href="{{ admin_assets('libs/filepond/filepond.min.css') }}" type="text/css" />
     <link rel="stylesheet" href="{{ admin_assets('libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css') }}">
+    <link rel="stylesheet" href="{{ admin_assets('css/toastr.css') }}" type="text/css" />
 
   </head>
   <body>
@@ -82,6 +83,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="../source/alert/dist/sweetalert.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{ admin_assets('js/toastr.js') }}"></script>
   
   </body>
 </html>

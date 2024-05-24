@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Category;
 use Validator;
 
@@ -45,6 +46,7 @@ class CategoryController extends Controller
               $categories->banner   = $fileName;
         } 
         $categories->save();
+        Toastr::success('Category add succesfully!');
         return back();
     }
 
@@ -83,6 +85,7 @@ class CategoryController extends Controller
               $categories->banner   = $fileName;
         } 
         $categories->save();
+        Toastr::success('Category update succesfully!');
         return back();
     }
 
@@ -117,6 +120,7 @@ class CategoryController extends Controller
               $categories->icon   = $fileName;
         } 
         $categories->save();
+        Toastr::success('Sub category add succesfully!');
         return back();
     }
 

@@ -88,6 +88,7 @@
                         _token : $("input[name=_token]").val(),
                     },
                     success:function(respone){
+                         toastr.success('Brand delete successfully');
                         $('#uid'+id).remove();
                     }
                 });
@@ -126,9 +127,9 @@
             },
             success: function (data) {
                 if (data == 1) {
-                   
+                   toastr.success('Brand status update successfully');
                 } else {
-                    
+                    toastr.success('Brand status update successfully');
                 }
             }
         });

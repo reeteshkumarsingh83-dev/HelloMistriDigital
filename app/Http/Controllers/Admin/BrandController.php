@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use Validator;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BrandController extends Controller
 {
@@ -20,7 +21,7 @@ class BrandController extends Controller
     public function save(Request $request){
         $validator  = Validator::make($request->all(),[
           'name'           => 'required',
-          // 'icon'           => 'required|mimes:jpeg,jpg,png,gif|max:100',
+          'icon'           => 'required|mimes:jpeg,jpg,png,gif|max:100',
         ]);
         if($validator->fails()){
             return back()
@@ -37,6 +38,9 @@ class BrandController extends Controller
               $brands->icon   = $fileName;
         } 
         $brands->save();
+        // this message print on top
+         // Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+        Toastr::success('Brand add Succesfully!');
         return back();
     }
 
@@ -65,12 +69,13 @@ class BrandController extends Controller
               $brands->icon   = $fileName;
         } 
         $brands->save();
+        Toastr::success('Brand Update Succesfully!');
         return back();
     }
 
     public function delete($id){
         Brand::destroy($id);
-        return response()->json(['message'=> 'Data delete succesfully']); 
+        return response()->json(); 
     }
 
     public function status(Request $request){

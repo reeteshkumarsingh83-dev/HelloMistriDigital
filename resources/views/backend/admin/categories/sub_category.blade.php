@@ -186,6 +186,7 @@
                         _token : $("input[name=_token]").val(),
                     },
                     success:function(respone){
+                        toastr.success('Sub category delete successfully');
                         $('#uid'+id).remove();
                     }
                 });

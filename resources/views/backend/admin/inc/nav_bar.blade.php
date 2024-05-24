@@ -640,9 +640,7 @@
                <img class="rounded-circle header-profile-user" src="{{ admin_assets('images/users/avatar-1.jpg') }}" alt="Header Avatar">
                <span class="text-start ms-xl-2">
                  <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
-                   @if(auth::check())
-                   {{ auth::user()->name }}
-                   @endif
+                   
                </span>
              </span>
            </button>
@@ -690,3 +688,5 @@
      </div>
    </div>
  </header>
+ <!-- tostar message -->
+ {!! Toastr::message() !!}

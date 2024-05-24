@@ -1,5 +1,4 @@
 @extends('backend.admin.layouts.app')
-
 @section('content')
 <div class="main-content">
   <div class="page-content web_config">
@@ -96,5 +95,4 @@
 	  }
 	}
 </script>
-
 @endsection

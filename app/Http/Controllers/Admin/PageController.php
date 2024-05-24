@@ -8,6 +8,7 @@ use App\Models\SocialMedia;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Brian2694\Toastr\Facades\Toastr;
 
 class PageController extends Controller
 {
@@ -54,7 +55,8 @@ class PageController extends Controller
           $page->banner   = $fileName;
     } 
     $page->save();
-    return redirect()->route('admin.pages')->with('success','Page Create successfully!');
+    Toastr::success('Page added succesfully!');
+    return redirect()->route('admin.pages');
 
     }
 
@@ -91,12 +93,13 @@ class PageController extends Controller
           $page->banner   = $fileName;
     } 
     $page->save();
-    return redirect()->route('admin.pages')->with('success','Page Update successfully!');
+    Toastr::success('Page update succesfully!');
+    return redirect()->route('admin.pages');
     }
 
     public function PageDelete($id){
         Page::destroy($id);
-        return response()->json(['message'=> 'Data delete succesfully']); 
+        return response()->json(); 
     }
 
     public function status(Request $request){
@@ -130,7 +133,8 @@ class PageController extends Controller
        $social->name  = $request->name;
        $social->social_media_url  = $request->social_media_url;
        $social->save();
-       return redirect()->route('admin.social-media')->with('success','Social Update successfully!');
+       Toastr::success('Social media added succesfully!');
+       return redirect()->route('admin.social-media');
     }
 
     public function socialMediaEdit($id){
@@ -155,12 +159,13 @@ class PageController extends Controller
        $social->name  = $request->name;
        $social->social_media_url  = $request->social_media_url;
        $social->save();
+       Toastr::success('Social media update succesfully!');
        return redirect()->route('admin.social-media')->with('success','Social Update successfully!');
     }
 
     public function socialMediaDelete($id){
         SocialMedia::destroy($id);
-        return response()->json(['message'=> 'Data delete succesfully']); 
+        return response()->json(); 
     }
 
     public function mediaStatus(Request $request){

@@ -95,6 +95,7 @@
                         _token : $("input[name=_token]").val(),
                     },
                     success:function(respone){
+                        toastr.success('Page deleted successfully');
                         $('#uid'+id).remove();
                     }
                 });
@@ -125,9 +126,9 @@
             },
             success: function (data) {
                 if (data == 1) {
-                   
+                   toastr.success('Page status update successfully');
                 } else {
-                    
+                    toastr.success('Page status update successfully');
                 }
             }
         });

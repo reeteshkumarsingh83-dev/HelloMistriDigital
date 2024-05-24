@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use Validator;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ServiceController extends Controller
 {
@@ -40,6 +41,7 @@ class ServiceController extends Controller
               $service->image   = $fileName;
         } 
         $service->save();
+        Toastr::success('Service added succesfully!');
         return redirect()->route('admin.service-list');
     }
 
@@ -71,12 +73,13 @@ class ServiceController extends Controller
               $service->image   = $fileName;
         } 
         $service->save();
+        Toastr::success('Service updated succesfully!');
         return redirect()->route('admin.service-list');
     }
 
     public function delete($id){
         Service::destroy($id);
-        return response()->json(['message'=> 'Data delete succesfully']); 
+        return response()->json(); 
     }
 
     public function status(Request $request){

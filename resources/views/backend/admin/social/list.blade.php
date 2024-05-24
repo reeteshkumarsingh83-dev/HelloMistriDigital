@@ -147,6 +147,7 @@
                         _token : $("input[name=_token]").val(),
                     },
                     success:function(respone){
+                        toastr.success('social media deleted successfully');
                         $('#uid'+id).remove();
                     }
                 });
@@ -177,9 +178,9 @@
             },
             success: function (data) {
                 if (data == 1) {
-                   
+                   toastr.success('social media status update successfully');
                 } else {
-                    
+                    toastr.success('social media status update successfully');
                 }
             }
         });
