@@ -41,8 +41,8 @@ class BrandController extends Controller
     }
 
     public function edit($id){
-       $brand_data   = Brand::where('id',$id)->first();
-       return view('backend.admin.brand.edit',compact('brand_data'));
+        $brand_data   = Brand::where('id',$id)->first();
+        return view('backend.admin.brand.edit',compact('brand_data'));
     }
 
     public function update(Request $request){
@@ -71,5 +71,15 @@ class BrandController extends Controller
     public function delete($id){
         Brand::destroy($id);
         return response()->json(['message'=> 'Data delete succesfully']); 
+    }
+
+    public function status(Request $request){
+        if ($request->ajax()) {
+            $brand = Brand::find($request->id);
+            $brand->status = $request->status;
+            $brand->save();
+            $data = $request->status;
+            return response()->json($data);
+        }
     }
 }

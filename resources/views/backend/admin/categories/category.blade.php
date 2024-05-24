@@ -157,7 +157,7 @@
                                                 <td>{{ $category->priority_number }}</td>
                                                 <td>
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="checkbox" role="switch" id="SwitchCheck1" checked="">
+                                                        <input class="form-check-input statusChange" type="checkbox" id="{{$category->id}}" <?php if ($category->status == 1) echo "checked" ?>>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -227,5 +227,31 @@
       }
     }
 </script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).on('change', '.statusChange', function () {
+        var id = $(this).attr("id");
+        if ($(this).prop("checked") == true) {
+            var status = 1;
+        } else if ($(this).prop("checked") == false) {
+            var status = 0;
+        }
+        $.ajax({
+            url: "{{route('admin.category-status')}}",
+            method: 'POST',
+            data: {
+                id: id,
+                "_token": "{{ csrf_token() }}",
+                status: status
+            },
+            success: function (data) {
+                if (data == 1) {
+                   
+                } else {
+                    
+                }
+            }
+        });
+    });
+</script>
 @endsection

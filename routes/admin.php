@@ -42,6 +42,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::get('page/create',[PageController::class,'PageCreate'])->name('admin.create-page');
     Route::post('page/save',[PageController::class,'PageSave'])->name('admin.save-page');
     Route::get('page/data-delete/{id}',[PageController::class,'PageDelete'])->name('admin.data-delete');
+    Route::post('pages/status',[PageController::class,'status'])->name('admin.pages-status');
 
     Route::get('page/edit/{id}',[PageController::class,'PageEdit'])->name('admin.edit-page');
     Route::post('page/update',[PageController::class,'PageUpdate'])->name('admin.update-page');
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::get('/website/banner-edit/{id}',[ConfigrationSettingController::class,'BannerEdit'])->name('admin.banner-edit');
     Route::post('/website/banner-update',[ConfigrationSettingController::class,'BannerUpdate'])->name('admin.banner-update');
     Route::get('/website/banner-delete/{id}',[ConfigrationSettingController::class,'BannerDelete'])->name('admin.banner-delete');
+    Route::post('/website/banner-status',[ConfigrationSettingController::class,'BannerStatus'])->name('admin.banner-status');
 
     // category section
     Route::get('/category',[CategoryController::class,'category'])->name('admin.category');
@@ -62,6 +64,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
 
     Route::get('/sub-category',[CategoryController::class,'Subcategory'])->name('admin.sub-category');
     Route::post('/sub-category',[CategoryController::class,'SubcategorySave'])->name('admin.sub-category-save');
+    Route::post('/category-status',[CategoryController::class,'status'])->name('admin.category-status');
 
    
     // Brand 
@@ -71,6 +74,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::get('/edit/brand/{id}',[BrandController::class,'edit'])->name('admin.edit-brand');
     Route::post('/update/brand',[BrandController::class,'update'])->name('admin.update-brand');
     Route::get('/brand/delete/{id}',[BrandController::class,'delete'])->name('admin.delete-brand');
+    Route::post('/brand/status',[BrandController::class,'status'])->name('admin.brand-status');
 
     // services
     Route::get('/service',[ServiceController::class,'service'])->name('admin.service-list');
@@ -79,7 +83,15 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::get('/edit-service/{id}',[ServiceController::class,'edit'])->name('admin.edit-service');
     Route::post('/update-service',[ServiceController::class,'update'])->name('admin.update-service');
     Route::get('/service/delete/{id}',[ServiceController::class,'delete'])->name('admin.delete-service');
-
-
+    Route::post('/service/status',[ServiceController::class,'status'])->name('admin.delete-status');
+     
+    // Social Media
+    Route::get('page/social-media',[PageController::class,'socialMedia'])->name('admin.social-media');
+    Route::post('page/social-media',[PageController::class,'socialMediaSave'])->name('admin.social-media-save');
+    Route::get('page/social-media-edit/{id}',[PageController::class,'socialMediaEdit'])->name('admin.social-media-edit');
+    Route::post('page/social-media-update',[PageController::class,'socialMediaUpdate'])->name('admin.social-media-update');
+    Route::get('/page/social-media-delete/{id}',[PageController::class,'socialMediaDelete'])->name('admin.social-media-delete');
+    Route::post('/page/social-media-status',[PageController::class,'mediaStatus'])->name('admin.social-media-status');
+     
    });
 });

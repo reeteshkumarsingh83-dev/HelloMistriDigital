@@ -120,6 +120,16 @@ class CategoryController extends Controller
         return back();
     }
 
+    public function status(Request $request){
+        if ($request->ajax()) {
+            $catg = Category::find($request->id);
+            $catg->status = $request->status;
+            $catg->save();
+            $data = $request->status;
+            return response()->json($data);
+        }
+    }
+
 
 
 

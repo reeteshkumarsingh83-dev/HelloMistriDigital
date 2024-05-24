@@ -32,7 +32,7 @@
               <div class="logo-header">
                 <div class="logo-header-inner logo-header-one">
                   <a href="/">
-                    <img src="{{asset('images/mistri_icons1.png')}}" alt="">
+                    <img src="{{admin_assets('images/settings/'.get_setting('web_logo'))}}" alt="">
                   </a>
                 </div>
               </div>

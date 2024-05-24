@@ -66,12 +66,6 @@
               <li>
                 <a href="">Iphone Warranty Check</a>
               </li>
-              <li>
-                <a href="">Dell Warranty Check</a>
-              </li>
-              <li>
-                <a href="">Sony Warranty Check</a>
-              </li>
             </ul>
           </div>
         </div>
@@ -97,10 +91,10 @@
           <div class="sf-site-link sf-widget-contact">
             <h4 class="sf-f-title">Contact Info</h4>
             <ul>
-              <li>India</li>
-              <li>+91 931 555 4701</li>
-              <li>+91 931 555 4701</li>
-              <li>contact@hellomistridigital.com</li>
+              <li><i class="fa fa-flag footer_icon" aria-hidden="true"></i> {{ get_setting('country') }}</li>
+              <li><i class="fa fa-phone footer_icon" aria-hidden="true"></i> {{ get_setting('phone') }}</li>
+              <li><i class="fa fa-envelope footer_icon" aria-hidden="true"></i> {{ get_setting('company_email') }}</li>
+              <li><i class="fa fa-location footer_icon" aria-hidden="true"></i> {{ get_setting('shop_address') }}</li>
             </ul>
           </div>
         </div>
@@ -113,11 +107,19 @@
       <div class="sf-footer-bottom-section">
         <div class="sf-f-logo">
           <a href="javascript:void(0);">
-            <img src="{{asset('images/hello_mistri_logo.png')}}" alt="">
+            <img src="{{admin_assets('images/settings/'.get_setting('web_footer_logo'))}}" alt="">
           </a>
         </div>
+        <div class="">
+            @foreach (social_media() as $item)
+                <a class="social-btn"
+                   target="_blank" href="{{$item->social_media_url}}" style="color: white!important;">
+                    <i class="{{$item->icon}}" aria-hidden="true"></i>
+                </a>
+            @endforeach
+        </div>
         <div class="sf-f-copyright">
-          <span style="color: {{ get_setting('footer_text_color') }}">Copyright 2022 | hellomistridigital. All Rights Reserved | <br>Designed and Developed by <a href=""> Ronisha Informatics Pvt Ltd.</a>
+          <span>{{ get_setting('company_copy_right') }} <br>Designed and Developed by <a href=""> Ronisha Informatics Pvt Ltd.</a>
           </span>
         </div>
       </div>

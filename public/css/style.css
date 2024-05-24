@@ -27805,3 +27805,18 @@ img {
 .subscriptions_ul span{
   font-size: 14px;
 }
+.social-btn{
+  padding: 8px;
+  margin: 3px;
+  border-radius: 50%;
+  height: 30px!important;
+  width: 30px!important;
+  text-align: center;
+  background-color: #15939a;
+}
+.footer_icon{
+  font-size: 13px!important;
+}
+.sf-footer-bottom-section img{
+  height: 60px;
+}

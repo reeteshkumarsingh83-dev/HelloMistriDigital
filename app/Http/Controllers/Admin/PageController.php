@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Page;
 use Validator;
 use Auth;
+use App\Models\SocialMedia;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -96,6 +97,80 @@ class PageController extends Controller
     public function PageDelete($id){
         Page::destroy($id);
         return response()->json(['message'=> 'Data delete succesfully']); 
+    }
+
+    public function status(Request $request){
+        if ($request->ajax()) {
+            $page = Page::find($request->id);
+            $page->status = $request->status;
+            $page->save();
+            $data = $request->status;
+            return response()->json($data);
+        }
+    }
+
+    public function socialMedia(){
+
+        $socialMedias   =  SocialMedia::orderBy('id','desc')->get();
+        return view('backend.admin.social.list',compact('socialMedias'));
+    }
+    public function socialMediaSave(Request $request){
+        $validator  = Validator::make($request->all(),[
+        'name'                      => 'required',
+        'social_media_url'          => 'required',
+        ]);
+
+        if($validator->fails()){
+        return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+       
+       $social = new SocialMedia;
+       $social->name  = $request->name;
+       $social->social_media_url  = $request->social_media_url;
+       $social->save();
+       return redirect()->route('admin.social-media')->with('success','Social Update successfully!');
+    }
+
+    public function socialMediaEdit($id){
+      $socialMedia   =  SocialMedia::where('id',$id)->first();
+      return view('backend.admin.social.edit',compact('socialMedia'));
+    }
+
+    public function socialMediaUpdate(Request $request){
+
+        $validator  = Validator::make($request->all(),[
+        'name'                      => 'required',
+        'social_media_url'          => 'required',
+        ]);
+
+        if($validator->fails()){
+        return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+       
+       $social =  SocialMedia::where('id',$request->social_media_id)->first();
+       $social->name  = $request->name;
+       $social->social_media_url  = $request->social_media_url;
+       $social->save();
+       return redirect()->route('admin.social-media')->with('success','Social Update successfully!');
+    }
+
+    public function socialMediaDelete($id){
+        SocialMedia::destroy($id);
+        return response()->json(['message'=> 'Data delete succesfully']); 
+    }
+
+    public function mediaStatus(Request $request){
+        if ($request->ajax()) {
+            $social = SocialMedia::find($request->id);
+            $social->status = $request->status;
+            $social->save();
+            $data = $request->status;
+            return response()->json($data);
+        }
     }
 
 

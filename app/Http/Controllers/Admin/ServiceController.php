@@ -79,6 +79,16 @@ class ServiceController extends Controller
         return response()->json(['message'=> 'Data delete succesfully']); 
     }
 
+    public function status(Request $request){
+        if ($request->ajax()) {
+            $service = Service::find($request->id);
+            $service->status = $request->status;
+            $service->save();
+            $data = $request->status;
+            return response()->json($data);
+        }
+    }
+
     private function make_slug($string){
 
         $table = array(

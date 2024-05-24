@@ -66,7 +66,7 @@ class ConfigrationSettingController extends Controller
             $setting->save();
         }
         $web_color_primary            =  Setting::where('type','web_color_primary')->first();
-        $web_color_primary->value   = $request->web_color_primary;
+        $web_color_primary->value     = $request->web_color_primary;
         $web_color_primary->save();
 
 
@@ -172,6 +172,16 @@ class ConfigrationSettingController extends Controller
     public function BannerDelete($id){
         Banner::destroy($id);
         return response()->json(['message'=> 'Data delete succesfully']); 
+    }
+
+    public function BannerStatus(Request $request){
+        if ($request->ajax()) {
+            $banner = Banner::find($request->id);
+            $banner->status = $request->status;
+            $banner->save();
+            $data = $request->status;
+            return response()->json($data);
+        }
     }
 
 }

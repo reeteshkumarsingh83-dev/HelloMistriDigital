@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $banners =  Banner::orderBy('id','desc')->get(); 
+        $banners =  Banner::orderBy('id','desc')->where('status',1)->get(); 
         Artisan::call('view:clear');
         Artisan::call('cache:clear');
         Artisan::call('config:clear');
