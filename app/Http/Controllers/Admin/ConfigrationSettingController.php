@@ -188,4 +188,12 @@ class ConfigrationSettingController extends Controller
         }
     }
 
+    public function sms(){
+        return view('backend.admin.configration.sms');
+    }
+
+    public function mailConfig(){
+        return view('backend.admin.configration.mail_config');
+    }
+
 }

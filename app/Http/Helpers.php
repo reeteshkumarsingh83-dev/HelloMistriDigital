@@ -3,6 +3,7 @@ use App\Models\Setting;
 use App\Models\Page;
 use App\Models\Category;
 use App\Models\SocialMedia;
+use App\Models\Service;
 
   if (!function_exists('get_setting')) {
     function get_setting($key)
@@ -51,6 +52,12 @@ use App\Models\SocialMedia;
      {
         $categories = Category::orderBy('id', 'asc')->where('status',1)->get();
         return $categories;
+     }
+
+     function services()
+     {
+        $services = Service::orderBy('id', 'asc')->where('status',1)->get();
+        return $services;
      }
 
     function social_media(){

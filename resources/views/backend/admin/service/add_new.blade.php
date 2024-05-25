@@ -74,7 +74,9 @@
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror
                     </div>
-                  <button class="btn btn-sm bg-success mt-2">Create</button>
+                  <div class="text-end my-3">
+                    <button type="submit" class="btn btn-success w-sm">Save</button>
+                  </div>
                 </div>
               </div>
             </form>  

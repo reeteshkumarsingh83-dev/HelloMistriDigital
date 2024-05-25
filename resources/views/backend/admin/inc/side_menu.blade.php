@@ -164,6 +164,23 @@
          </li>
 
          <li class="nav-item">
+           <a class="nav-link menu-link" href="#sidebarPlan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPlan">
+             <i class="ri-layout-3-line"></i>
+             <span data-key="t-layouts">Plans</span>
+           </a>
+           <div class="collapse menu-dropdown" id="sidebarPlan">
+             <ul class="nav nav-sm flex-column">
+               <li class="nav-item">
+                 <a href="{{ route('admin.plans') }}" class="nav-link" data-key="t-horizontal">List</a>
+               </li>
+               <li class="nav-item">
+                 <a href="{{ route('admin.plan-create') }}" class="nav-link" data-key="t-horizontal">Add New</a>
+               </li>
+             </ul>
+           </div>
+         </li>
+
+         <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarbrands" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarbrands">
              <i class="ri-layout-3-line"></i>
              <span data-key="t-layouts">Brands</span>
@@ -259,7 +276,7 @@
            </a>
          </li>
          <li class="nav-item">
-           <a class="nav-link menu-link" href="widgets.html">
+           <a class="nav-link menu-link" href="{{ route('admin.sms') }}">
              <i class="ri-honour-line"></i>
              <span data-key="t-widgets">Sms Module</span>
            </a>
@@ -277,23 +294,10 @@
            </a>
          </li>
          <li class="nav-item">
-           <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaps">
+           <a class="nav-link menu-link" href="{{ route('admin.mail-config') }}" role="button" aria-controls="sidebarMaps">
              <i class="ri-map-pin-line"></i>
              <span data-key="t-maps">Mail Config</span>
            </a>
-           <div class="collapse menu-dropdown" id="sidebarMaps">
-             <ul class="nav nav-sm flex-column">
-               <li class="nav-item">
-                 <a href="maps-google.html" class="nav-link" data-key="t-google"> Google </a>
-               </li>
-               <li class="nav-item">
-                 <a href="maps-vector.html" class="nav-link" data-key="t-vector"> Vector </a>
-               </li>
-               <li class="nav-item">
-                 <a href="maps-leaflet.html" class="nav-link" data-key="t-leaflet"> Leaflet </a>
-               </li>
-             </ul>
-           </div>
          </li>
          <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">

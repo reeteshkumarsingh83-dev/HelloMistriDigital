@@ -8,8 +8,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Brand table ({{ $brands->count() }}) 
-                        <a href="{{ route('admin.add-new-brand') }}"><button class="btn btn-sm bg-success text-white">Create New</button></a></h4>
+                    <h4 class="card-title mb-0 flex-grow-1">Plans table ({{ $plans->count() }}) <a href="{{ route('admin.plan-create') }}"><button class="btn btn-sm bg-success text-white">Create New</button></a></h4>
                     <div class="flex-shrink-0">
                         <div class="form-check form-switch form-switch-right form-switch-md">
                             <label for="hover-rows-showcode" class="form-label text-muted">Show Code</label>
@@ -29,32 +28,36 @@
                                     <table class="table table-hover table-striped align-middle table-nowrap mb-0">
                                         <thead>
                                             <tr>
-                                                <th scope="col">BRAND ID</th>
-                                                <th scope="col">NAME</th>
-                                                <th scope="col">ICON</th>
+                                                <th scope="col">PLANS ID</th>
+                                                <th scope="col">TITLE</th>
+                                                <th scope="col">PRICE</th>
+                                                <th scope="col">TIME DURATION</th>
+                                                <th scope="col">AFFORDABLE AMOUNT</th>
+                                                <!-- <th scope="col">BENEFITS</th> -->
                                                 <th scope="col">STATUS</th>
                                                 <th scope="col">ACTION</th>
                                             </tr>
                                         </thead>
                                            <?php $i = 0 ?>
-                                             @foreach($brands as $brand)
+                                             @foreach($plans as $plan)
                                            <?php $i++ ?>
-                                           <tbody id="uid{{$brand->id}}">
+                                           <tbody id="uid{{$plan->id}}">
                                             <tr>
                                                 <td class="fw-medium">{{ $i }}</td>
-                                                <td>{{ $brand->name }}</td>
-                                                <td><i class="ri-checkbox-circle-line align-middle text-success"></i> 
-                                                <img src="{{ get_upload_image('brands/'.$brand->icon) ?? ''}}" onerror="this.src='{{ asset("images/img2.jpg") }}'" class="get_upload_image" alt="image">
-                                                </td>
+                                                <td>{{ $plan->title }}</td>
+                                                <td>{{ $plan->price }}</td>
+                                                <td>{{ $plan->time_duration }}</td>
+                                                <td>{{ $plan->affordable_amount }}</td>
+                                                <!-- <td>{{ $plan->Benefits }}</td> -->
                                                 <td>
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input statusChange" type="checkbox" id="{{$brand->id}}" <?php if ($brand->status == 1) echo "checked" ?>>
+                                                        <input class="form-check-input statusChange" type="checkbox" id="{{$plan->id}}" <?php if ($plan->status == 1) echo "checked" ?>>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="hstack gap-3 flex-wrap">
-                                                        <a href="{{ route('admin.edit-brand',$brand->id) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>
-                                                        <a href="javascript:void(0);" class="link-danger fs-15"><i class="ri-delete-bin-line" onclick="PageDelete({{$brand->id}})"></i></a>
+                                                        <!-- <a href="{{ route('admin.plan-edit',$plan->id) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a> -->
+                                                        <a href="javascript:void(0);" class="link-danger fs-15"><i class="ri-delete-bin-line" onclick="PlanDelete({{$plan->id}})"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -72,7 +75,7 @@
   </div>
 </div> 
 <script>
-    function PageDelete(id) {
+    function PlanDelete(id) {
         swal({
             title: "Are you sure?",
             text:  "You will not be able to recover this data!",
@@ -83,13 +86,13 @@
         .then((willDelete) => {
             if (willDelete) {
                  $.ajax({
-                    url : "brand/delete/"+id,
+                    url : "plan/delete/"+id,
                     type : "GET",
                     data:{
                         _token : $("input[name=_token]").val(),
                     },
                     success:function(respone){
-                         toastr.success('Brand delete successfully');
+                        toastr.success('Plan deleted successfully');
                         $('#uid'+id).remove();
                     }
                 });
@@ -109,7 +112,7 @@
 	  }
 	}
 </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
     $(document).on('change', '.statusChange', function () {
         var id = $(this).attr("id");
@@ -119,7 +122,7 @@
             var status = 0;
         }
         $.ajax({
-            url: "{{route('admin.brand-status')}}",
+            url: "{{route('admin.plan-status')}}",
             method: 'POST',
             data: {
                 id: id,
@@ -128,14 +131,12 @@
             },
             success: function (data) {
                 if (data == 1) {
-                   toastr.success('Brand status update successfully');
+                   toastr.success('Plan status update successfully');
                 } else {
-                    toastr.success('Brand status update successfully');
+                    toastr.success('Plan status update successfully');
                 }
             }
         });
     });
-
 </script>
-
 @endsection

@@ -70,7 +70,9 @@
                       </div>
                     </div>
                   </div>
-                  <button class="btn btn-sm bg-success mt-2">Update</button>
+                  <div class="text-end my-3">
+                    <button type="submit" class="btn btn-success w-sm">Update</button>
+                  </div>
                 </div>
               </div>
             </form>  

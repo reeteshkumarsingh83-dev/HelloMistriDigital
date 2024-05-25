@@ -10,13 +10,20 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Pages <a href="{{ route('admin.banner-create') }}"><button class="btn btn-sm bg-success text-white">Create New</button></a></h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="hover-rows-showcode" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="hover-rows-showcode">
-                        </div>
+                    <div class="col-sm">
+                    <h5 class="card-title mb-0">Order History</h5>
+                </div>
+                <div class="col-sm-auto mx-3">
+                    <div class="d-flex gap-1 flex-wrap">
+                        <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Banner Create </button>
                     </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <div class="form-check form-switch form-switch-right form-switch-md">
+                        <label for="hover-rows-showcode" class="form-label text-muted">Show Code</label>
+                        <input class="form-check-input code-switcher" type="checkbox" id="hover-rows-showcode">
+                    </div>
+                </div>
                 </div><!-- end card header -->
 
                 <div class="card-body">

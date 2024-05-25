@@ -36,3 +36,10 @@
 	border: 1px solid #000;
 	border-radius: 5px;
 }
+.sms_box{
+	padding: 10px;
+}
+.replace_otp{
+	padding: 10px;
+	color: #fff;
+}

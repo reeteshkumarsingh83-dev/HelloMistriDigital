@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\PlanController;
 
 
 /*
@@ -92,6 +93,21 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::post('page/social-media-update',[PageController::class,'socialMediaUpdate'])->name('admin.social-media-update');
     Route::get('/page/social-media-delete/{id}',[PageController::class,'socialMediaDelete'])->name('admin.social-media-delete');
     Route::post('/page/social-media-status',[PageController::class,'mediaStatus'])->name('admin.social-media-status');
-     
+
+    // Plans Route
+     Route::get('/plans',[PlanController::class,'plans'])->name('admin.plans');
+     Route::get('/plan-create',[PlanController::class,'planCreate'])->name('admin.plan-create');
+     Route::post('/plan-save',[PlanController::class,'planSave'])->name('admin.plan-save');
+     Route::get('/plan-edit/{id}',[PlanController::class,'planEdit'])->name('admin.plan-edit');
+
+     Route::get('/plan/delete/{id}',[PlanController::class,'delete'])->name('admin.plan-delete');
+     Route::post('/plan/status',[PlanController::class,'status'])->name('admin.plan-status');
+
+     // sms module
+     Route::get('/sms',[ConfigrationSettingController::class,'sms'])->name('admin.sms');
+
+
+     // mail config
+     Route::get('/mail-config',[ConfigrationSettingController::class,'mailConfig'])->name('admin.mail-config');
    });
 });

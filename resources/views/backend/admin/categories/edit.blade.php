@@ -50,11 +50,11 @@
                       <div>
                         <label for="valueInput" class="form-label">Choose priority number</label>
                         <select class="form-select" aria-label="Default select example" name="priority_number">
-						  <option value="0">0</option>
-						  <option value="1">1</option>
-						  <option value="2">2</option>
-						  <option value="3">3</option>
-						</select>
+            						  <option value="0">0</option>
+            						  <option value="1">1</option>
+            						  <option value="2">2</option>
+            						  <option value="3">3</option>
+            						</select>
                         @error('priority_number')
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror
@@ -102,7 +102,9 @@
                     </div>
 
                   </div>
-                  <button class="btn btn-sm bg-success mt-2">Create</button>
+                  <div class="text-end my-3">
+                    <button type="submit" class="btn btn-success w-sm">Update</button>
+                  </div>
                 </div>
               </div>
             </form>  
