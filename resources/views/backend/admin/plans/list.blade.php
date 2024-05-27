@@ -1,5 +1,8 @@
 @extends('backend.admin.layouts.app')
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
 @section('content')
 <div class="main-content">
   <div class="page-content web_config">
@@ -8,13 +11,20 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Plans table ({{ $plans->count() }}) <a href="{{ route('admin.plan-create') }}"><button class="btn btn-sm bg-success text-white">Create New</button></a></h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="hover-rows-showcode" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="hover-rows-showcode">
-                        </div>
+                    <div class="col-sm">
+                    <h5 class="card-title mb-0">Plan History</h5>
+                </div>
+                <div class="col-sm-auto mx-3">
+                    <div class="d-flex gap-1 flex-wrap">
+                        <a href="{{ route('admin.plan-create') }}"><button type="button" class="btn btn-success add-btn" data-bs-toggle="modal" id="create-btn" data-bs-target="#showModal"><i class="ri-add-line align-bottom me-1"></i> Plan Create </button></a>
                     </div>
+                </div>
+                <div class="flex-shrink-0">
+                    <div class="form-check form-switch form-switch-right form-switch-md">
+                        <label for="hover-rows-showcode" class="form-label text-muted">Show Code</label>
+                        <input class="form-check-input code-switcher" type="checkbox" id="hover-rows-showcode">
+                    </div>
+                </div>
                 </div><!-- end card header -->
 
                 <div class="card-body">
@@ -25,44 +35,18 @@
 
                             <div class="col-xl-12">
                                 <div class="table-responsive mt-4 mt-xl-0">
-                                    <table class="table table-hover table-striped align-middle table-nowrap mb-0">
+                                     <table class="table table-hover table-striped align-middle  mb-0" id="myTable">
                                         <thead>
                                             <tr>
-                                                <th scope="col">PLANS ID</th>
-                                                <th scope="col">TITLE</th>
-                                                <th scope="col">PRICE</th>
-                                                <th scope="col">TIME DURATION</th>
-                                                <th scope="col">AFFORDABLE AMOUNT</th>
-                                                <!-- <th scope="col">BENEFITS</th> -->
-                                                <th scope="col">STATUS</th>
-                                                <th scope="col">ACTION</th>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Price</th>
+                                                <th scope="col">Time Duration</th>
+                                                <th scope="col">Affordable Amount</th>
+                                                <th width="105px">Action</th>
                                             </tr>
                                         </thead>
-                                           <?php $i = 0 ?>
-                                             @foreach($plans as $plan)
-                                           <?php $i++ ?>
-                                           <tbody id="uid{{$plan->id}}">
-                                            <tr>
-                                                <td class="fw-medium">{{ $i }}</td>
-                                                <td>{{ $plan->title }}</td>
-                                                <td>{{ $plan->price }}</td>
-                                                <td>{{ $plan->time_duration }}</td>
-                                                <td>{{ $plan->affordable_amount }}</td>
-                                                <!-- <td>{{ $plan->Benefits }}</td> -->
-                                                <td>
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input statusChange" type="checkbox" id="{{$plan->id}}" <?php if ($plan->status == 1) echo "checked" ?>>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="hstack gap-3 flex-wrap">
-                                                        <!-- <a href="{{ route('admin.plan-edit',$plan->id) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a> -->
-                                                        <a href="javascript:void(0);" class="link-danger fs-15"><i class="ri-delete-bin-line" onclick="PlanDelete({{$plan->id}})"></i></a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                             </tbody>
-                                           @endforeach 
+                                        <tbody></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -74,6 +58,26 @@
     </div>
   </div>
 </div> 
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+ 
+<script src="https://cdn.datatables.net/1.10.8/js/jquery.dataTables.min.js" defer="defer"></script>
+<script type="text/javascript">
+    $(function () {
+          var table = $('#myTable').DataTable({
+              processing: true,
+              serverSide: true,
+              ajax: "{{ route('admin.plans') }}",
+              columns: [
+                  {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                  {data: 'title', name: 'title'},
+                  {data: 'price', name: 'price'},
+                  {data: 'time_duration', name: 'time_duration'},
+                  {data: 'affordable_amount', name: 'affordable_amount'},
+                  {data: 'action', name: 'action'},
+              ]
+          });
+        });
+</script>
 <script>
     function PlanDelete(id) {
         swal({

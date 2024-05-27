@@ -30,6 +30,16 @@ class ConfigrationSettingController extends Controller
                     ->withErrors($validator)
                     ->withInput();
         } 
+        if($request['email_verification'] == 1 && $request['phone_verification'] == 1){
+            Toastr::error('Both Phone & Email verification can not be active at a time');
+            return back();
+        }
+
+        if ($request['email_verification'] == 1) {
+            $request['phone_verification'] = 0;
+        } elseif ($request['phone_verification'] == 1) {
+            $request['email_verification'] = 0;
+        }
 
         $setting        =  Setting::where('type','web_logo')->first();
         $web_logo       = $request->web_logo;
@@ -98,6 +108,16 @@ class ConfigrationSettingController extends Controller
         $company_copy_right            =  Setting::where('type','company_copy_right')->first();
         $company_copy_right->value  = $request->company_copy_right;
         $company_copy_right->save();
+
+        $phone_verification   = Setting::where('type','phone_verification')->first();
+        $phone_verification->value   =  $request['phone_verification'];
+        $phone_verification->save();
+
+        $email_verification   = Setting::where('type','email_verification')->first();
+        $email_verification->value   =  $request['email_verification'];
+        $email_verification->save();
+
+
         Toastr::success('Setting Update Succesfully!');
         return back();
 
@@ -187,13 +207,4 @@ class ConfigrationSettingController extends Controller
             return response()->json($data);
         }
     }
-
-    public function sms(){
-        return view('backend.admin.configration.sms');
-    }
-
-    public function mailConfig(){
-        return view('backend.admin.configration.mail_config');
-    }
-
 }

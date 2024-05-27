@@ -47,21 +47,26 @@ use App\Models\Service;
         }
        }
   }
-
+ if (!function_exists('categories')) {
     function categories()
      {
         $categories = Category::orderBy('id', 'asc')->where('status',1)->get();
         return $categories;
      }
-
+   }
+ if (!function_exists('services')) {
      function services()
      {
         $services = Service::orderBy('id', 'asc')->where('status',1)->get();
         return $services;
      }
+   }
 
+
+  if (!function_exists('social_media')) {
     function social_media(){
       $social_media    =   SocialMedia::orderBy('id','desc')->where('status',1)->get();
       return $social_media;
     }
+  }
 ?>

@@ -56,11 +56,13 @@
              <div class="sf-contact-form-wrap">
           <!--Contact Information-->
           <div class="sf-contact-form service_card_form card">
-            <form class="" method="POST" action="{{ route('web-post-service') }}">
+            <form class="" method="POST" action="{{ route('web-get-service') }}">
             	<div class="sf-con-form-title text-center">
 	              <h4 class="m-b30">Find plans for your device</h4>
 	            </div>
             	@csrf
+               <input type="hidden" name="service_id" value="{{ $services->id }}">
+              <input type="hidden" name="category_id" value="{{ $category->id }}">
               <div class="row">
                 <!-- COLUMNS 1 -->
                 <div class="col-md-12">

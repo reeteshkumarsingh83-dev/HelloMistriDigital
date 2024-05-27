@@ -70,6 +70,74 @@
                         <input type="text" class="form-control" name="company_copy_right" id="valueInput" value="{{ get_setting('company_copy_right') }}" placeholder="Rename company Copy right">
                       </div>
                     </div>
+
+                     <div class="col-md-4 col-12">
+                        @php($pv  =  get_setting('phone_verification'))
+                        <div class="form-group">
+                            <label>Phone OTP
+                                </label><small style="color: red">*</small>
+                            <div class="input-group input-group-md-down-break">
+                                <!-- Custom Radio -->
+                                <div class="form-control">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="1"
+                                               name="phone_verification"
+                                               id="phone_verification_on" {{(isset($pv) && $pv==1)?'checked':''}}>
+                                        <label class="custom-control-label"
+                                               for="phone_verification_on">on</label>
+                                    </div>
+                                </div>
+                                <!-- End Custom Radio -->
+
+                                <!-- Custom Radio -->
+                                <div class="form-control">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="0"
+                                               name="phone_verification"
+                                               id="phone_verification_off" {{(isset($pv) && $pv==0)?'checked':''}}>
+                                        <label class="custom-control-label"
+                                               for="phone_verification_off">off</label>
+                                    </div>
+                                </div>
+                                <!-- End Custom Radio -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-12">
+                         @php($ev  =  get_setting('email_verification'))
+                        <div class="form-group">
+                            <label>email</label><small
+                                style="color: red">*</small>
+                            <div class="input-group input-group-md-down-break">
+                                <!-- Custom Radio -->
+                                <div class="form-control">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="1"
+                                               name="email_verification"
+                                               id="email_verification_on" {{$ev==1?'checked':''}}>
+                                        <label class="custom-control-label"
+                                               for="email_verification_on">on</label>
+                                    </div>
+                                </div>
+                                <!-- End Custom Radio -->
+
+                                <!-- Custom Radio -->
+                                <div class="form-control">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" value="0"
+                                               name="email_verification"
+                                               id="email_verification_off" {{$ev==0?'checked':''}}>
+                                        <label class="custom-control-label"
+                                               for="email_verification_off">off</label>
+                                    </div>
+                                </div>
+                                <!-- End Custom Radio -->
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="col-xxl-6 col-md-6 col-12">
                       <div class="card card_logo">
                         <label for="valueInput" class="form-label">Web Logo</label>
@@ -156,4 +224,30 @@
     </div>
   </footer>
 </div>
+    <script src="{{ admin_assets('js/tags-input.min.js')}}"></script>
+    <script src="{{ admin_assets('js/select2.min.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#phone_verification_on").click(function () {
+                @if(env('APP_MODE')!='demo')
+                if ($('#email_verification_on').prop("checked") == true) {
+                    $('#email_verification_off').prop("checked", true);
+                    $('#email_verification_on').prop("checked", false);
+                    const message = "Both Phone & Email verification can not be active at a time";
+                    toastr.info(message);
+                }
+                @else
+                call_demo();
+                @endif
+            });
+            $("#email_verification_on").click(function () {
+                if ($('#phone_verification_on').prop("checked") == true) {
+                    $('#phone_verification_off').prop("checked", true);
+                    $('#phone_verification_on').prop("checked", false);
+                    const message = "Both Phone & Email verification can not be active at a time";
+                    toastr.info(message);
+                }
+            });
+        });
+    </script>
  @endsection

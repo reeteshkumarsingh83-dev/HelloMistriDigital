@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\SmsModuleController;
+use App\Http\Controllers\Admin\MailController;
 
 
 /*
@@ -104,10 +106,12 @@ Route::group(['middleware' => 'admin.auth'], function(){
      Route::post('/plan/status',[PlanController::class,'status'])->name('admin.plan-status');
 
      // sms module
-     Route::get('/sms',[ConfigrationSettingController::class,'sms'])->name('admin.sms');
+     Route::get('/sms',[SmsModuleController::class,'sms'])->name('admin.sms');
+     Route::post('/sms-save',[SmsModuleController::class,'smsSave'])->name('admin.sms-save');
 
 
      // mail config
-     Route::get('/mail-config',[ConfigrationSettingController::class,'mailConfig'])->name('admin.mail-config');
+     Route::get('/mail-config',[MailController::class,'mailConfig'])->name('admin.mail-config');
+     Route::post('/mail-config-save',[MailController::class,'mailConfigSave'])->name('admin.mail-config-save');
    });
 });

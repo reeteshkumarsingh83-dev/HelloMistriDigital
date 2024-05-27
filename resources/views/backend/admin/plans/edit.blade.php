@@ -88,9 +88,9 @@
                       <div>
                         <label for="valueInput" class="form-label">Time Duration/Year</label>
                         <select class="form-select" aria-label="Default select example" name="time_duration">
-						  <option value="1" @if($plan->service_id == 1) selected @endif>1</option>
-						  <option value="2" @if($plan->service_id == 2) selected @endif>2</option>
-						</select>
+              						  <option value="1" @if($plan->service_id == 1) selected @endif>1</option>
+              						  <option value="2" @if($plan->service_id == 2) selected @endif>2</option>
+              						</select>
                         @error('time_duration')
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror

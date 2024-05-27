@@ -16,12 +16,9 @@ class ServiceController extends Controller
         return view('frontend.partials.popular_service_form',compact('category','brands','services'));
     }
 
-    public function catgServicePost(Request $request){
-        return redirect()->route('web-purches-service');
-    }
-
-    public function catgServicePurches(){
-        return view('frontend.partials.popular_service_purchase');
+    public function catgServiceGet(Request $request){
+         dd($request->all());
+         return view('frontend.partials.popular_service_purchase');
     }
 
     public function extendedService(Request $request){

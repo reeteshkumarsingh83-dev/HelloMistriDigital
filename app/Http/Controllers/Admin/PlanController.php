@@ -7,12 +7,24 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Plan;
 use Validator;
+use DataTables;
+
 
 class PlanController extends Controller
 {
-    public function plans(){
-        $plans  =  Plan::orderBy('id','desc')->get();
-        return view('backend.admin.plans.list',compact('plans'));
+    public function plans(Request $request){
+         if(\request()->ajax()){
+            $data = Plan::latest()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+                    $actionBtn = '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm" onclick="PlanDelete('.$row->id.')">Delete</a>';
+                    return $actionBtn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+         return view('backend.admin.plans.list');
     }
 
     public function planCreate(){
