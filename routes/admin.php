@@ -13,6 +13,9 @@ use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\SmsModuleController;
 use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\PaymentMethodController;
+use App\Http\Controllers\Admin\RoleAndPermission;
+use App\Http\Controllers\Admin\EmployeeController;
 
 
 /*
@@ -113,5 +116,24 @@ Route::group(['middleware' => 'admin.auth'], function(){
      // mail config
      Route::get('/mail-config',[MailController::class,'mailConfig'])->name('admin.mail-config');
      Route::post('/mail-config-save',[MailController::class,'mailConfigSave'])->name('admin.mail-config-save');
+
+     // payments
+     Route::get('/payment',[PaymentMethodController::class,'payment'])->name('admin.payment');
+     Route::post('/payment-method-update',[PaymentMethodController::class,'paymentUpdate'])->name('admin.payment-update');
+
+     // Role and permission
+     Route::get('/role-and-permission',[RoleAndPermission::class,'rolePermission'])->name('admin.role-and-permission');
+     Route::post('/role-and-permission-set',[RoleAndPermission::class,'rolePermissionSet'])->name('admin.role-and-permission-set');
+     Route::post('/role-and-permission-status',[RoleAndPermission::class,'rolePermissionStatus'])->name('admin.role-and-permission-status');
+
+     Route::get('/role-and-permission-delete/{id}',[RoleAndPermission::class,'rolePermissionDelete'])->name('admin.role-and-permission-delete');
+
+     // employee section
+     Route::get('/employee/list',[EmployeeController::class,'inedx'])->name('admin.employee');
+     Route::get('/employee/form',[EmployeeController::class,'employee'])->name('admin.employee-form');
+     Route::post('/employee/save',[EmployeeController::class,'employeeSave'])->name('admin.employee-save');
+
+
+
    });
 });

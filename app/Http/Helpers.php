@@ -41,26 +41,26 @@ use App\Models\Service;
 
     if (!function_exists('page')) {
       function page($key)
-      {
-            $page = Page::where('slug', $key)->first();
-            return $page;
-        }
+        {
+              $page = Page::where('slug', $key)->first();
+              return $page;
+          }
+         }
+    }
+   if (!function_exists('categories')) {
+      function categories()
+       {
+          $categories = Category::orderBy('id', 'asc')->where('status',1)->get();
+          return $categories;
        }
-  }
- if (!function_exists('categories')) {
-    function categories()
-     {
-        $categories = Category::orderBy('id', 'asc')->where('status',1)->get();
-        return $categories;
      }
-   }
- if (!function_exists('services')) {
-     function services()
-     {
-        $services = Service::orderBy('id', 'asc')->where('status',1)->get();
-        return $services;
+   if (!function_exists('services')) {
+       function services()
+       {
+          $services = Service::orderBy('id', 'asc')->where('status',1)->get();
+          return $services;
+       }
      }
-   }
 
 
   if (!function_exists('social_media')) {
@@ -69,4 +69,19 @@ use App\Models\Service;
       return $social_media;
     }
   }
+
+    if (!function_exists('module_permission_check')) {
+    function module_permission_check($mod_name){
+      $permission = auth('admin')->user()->role->module_access ?? '';
+      if (isset($permission) && in_array($mod_name, (array)json_decode($permission)) == true) {
+            return true;
+        }
+        if (auth('admin')->user()->admin_role_id == 1) {
+            return true;
+        }
+        return false;
+
+    }
+  }
+
 ?>

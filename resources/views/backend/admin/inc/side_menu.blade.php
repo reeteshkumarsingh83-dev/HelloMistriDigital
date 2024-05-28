@@ -88,11 +88,9 @@
            <a class="nav-link menu-link" href="{{ route('admin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
              <i class="ri-dashboard-2-line"></i>
              <span data-key="t-dashboards">Dashboards</span>
-             </a>
+           </a>
          </li>
-         <!-- end Dashboard Menu -->
-
-         <li class="nav-item">
+         <!-- end Dashboard Menu --> @if(module_permission_check('order_management') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
              <i class="ri-apps-2-line"></i>
              <span data-key="t-apps">Orders</span>
@@ -100,31 +98,29 @@
            <div class="collapse menu-dropdown" id="sidebarApps">
              <ul class="nav nav-sm flex-column">
                <li class="nav-item">
-                 <a href="#sidebarCalendar" class="nav-link" role="button" aria-expanded="false" aria-controls="sidebarCalendar" > All </a>
+                 <a href="#sidebarCalendar" class="nav-link" role="button" aria-expanded="false" aria-controls="sidebarCalendar"> All </a>
                </li>
                <li class="nav-item">
                  <a href="" class="nav-link"> Pending </a>
                </li>
                <li class="nav-item">
                  <a href="" class="nav-link">
-                   <span >Confirmed</span>
+                   <span>Confirmed</span>
                  </a>
                </li>
                <li class="nav-item">
                  <a href="" class="nav-link">
-                   <span >Processingo</span>
+                   <span>Processingo</span>
                  </a>
                </li>
-              <li class="nav-item">
+               <li class="nav-item">
                  <a href="" class="nav-link">
-                   <span >Delivered</span>
+                   <span>Delivered</span>
                  </a>
                </li>
              </ul>
            </div>
-         </li>
-
-         <li class="nav-item">
+         </li> @endif @if(module_permission_check('category_section') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
              <i class="ri-layout-3-line"></i>
              <span data-key="t-layouts">Categories</span>
@@ -140,9 +136,7 @@
                </li>
              </ul>
            </div>
-         </li>
-
-         <li class="menu-title">
+         </li> @endif @if(module_permission_check('service_section') ?? '') <li class="menu-title">
            <i class="ri-more-fill"></i>
            <span data-key="t-pages">Service Management</span>
          </li>
@@ -161,9 +155,7 @@
                </li>
              </ul>
            </div>
-         </li>
-
-         <li class="nav-item">
+         </li> @endif @if(module_permission_check('plan_section') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarPlan" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPlan">
              <i class="ri-layout-3-line"></i>
              <span data-key="t-layouts">Plans</span>
@@ -178,9 +170,7 @@
                </li>
              </ul>
            </div>
-         </li>
-
-         <li class="nav-item">
+         </li> @endif @if(module_permission_check('brand_section') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarbrands" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarbrands">
              <i class="ri-layout-3-line"></i>
              <span data-key="t-layouts">Brands</span>
@@ -195,34 +185,26 @@
                </li>
              </ul>
            </div>
-         </li>
-
-
-         <li class="menu-title">
+         </li> @endif @if(module_permission_check('customer_section') ?? '') <li class="menu-title">
            <i class="ri-more-fill"></i>
            <span data-key="t-pages">User Section</span>
-         </li>
-         <li class="nav-item">
+         </li> @endif @if(module_permission_check('vendor_section') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="{{ route('admin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
              <i class="ri-dashboard-2-line"></i>
              <span data-key="t-dashboards">Vendor</span>
-             </a>
-         </li>
-         <li class="nav-item">
+           </a>
+         </li> @endif @if(module_permission_check('store_management') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="{{ route('admin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
              <i class="ri-dashboard-2-line"></i>
              <span data-key="t-dashboards">Store</span>
-             </a>
-         </li>
-         <li class="nav-item">
+           </a>
+         </li> @endif @if(module_permission_check('customer_section') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="{{ route('admin.dashboard') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
              <i class="ri-dashboard-2-line"></i>
              <span data-key="t-dashboards">Customer</span>
-             </a>
-         </li>
-
-         <!-- end Dashboard Menu -->
-         <li class="menu-title">
+           </a>
+         </li> @endif
+         <!-- end Dashboard Menu --> @if(module_permission_check('page_management') ?? '') <li class="menu-title">
            <i class="ri-more-fill"></i>
            <span data-key="t-pages">Pages</span>
          </li>
@@ -241,8 +223,7 @@
                </li>
              </ul>
            </div>
-         </li>
-         <li class="nav-item">
+         </li> @endif @if(module_permission_check('banner_management') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
              <i class="ri-rocket-line"></i>
              <span data-key="t-landing">Banner</span>
@@ -257,8 +238,7 @@
                </li>
              </ul>
            </div>
-         </li>
-         <li class="menu-title">
+         </li> @endif @if(module_permission_check('social_media') ?? '') <li class="menu-title">
            <i class="ri-more-fill"></i>
            <span data-key="t-components">Components</span>
          </li>
@@ -267,30 +247,15 @@
              <i class="ri-pencil-ruler-2-line"></i>
              <span data-key="t-base-ui">Social Media</span>
            </a>
-         </li>
-
-         <li class="nav-item">
-           <a class="nav-link menu-link" href="#sidebarAdvanceUI" role="button" aria-expanded="false" aria-controls="sidebarAdvanceUI">
+         </li> @endif @if(module_permission_check('payment_method') ?? '') <li class="nav-item">
+           <a class="nav-link menu-link" href="{{ route('admin.payment') }}" role="button" aria-expanded="false" aria-controls="sidebarAdvanceUI">
              <i class="ri-stack-line"></i>
              <span data-key="t-advance-ui">Payment method</span>
            </a>
-         </li>
-         <li class="nav-item">
+         </li> @endif @if(module_permission_check('sms_module') ?? '') <li class="nav-item">
            <a class="nav-link menu-link" href="{{ route('admin.sms') }}">
              <i class="ri-honour-line"></i>
              <span data-key="t-widgets">Sms Module</span>
-           </a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link menu-link" href="{{ route('admin.configration') }}" aria-expanded="false" aria-controls="sidebarForms">
-             <i class="ri-file-list-3-line"></i>
-             <span data-key="t-forms">Web Config</span>
-           </a>
-         </li>
-         <li class="nav-item">
-           <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
-             <i class="ri-layout-grid-line"></i>
-             <span data-key="t-tables">Role and Permission</span>
            </a>
          </li>
          <li class="nav-item">
@@ -300,6 +265,31 @@
            </a>
          </li>
          <li class="nav-item">
+           <a class="nav-link menu-link" href="{{ route('admin.configration') }}" aria-expanded="false" aria-controls="sidebarForms">
+             <i class="ri-file-list-3-line"></i>
+             <span data-key="t-forms">Web Config</span>
+           </a>
+         </li> @endif @if(module_permission_check('role_and_permission') ?? '') <li class="nav-item">
+           <a class="nav-link menu-link" href="{{ route('admin.role-and-permission') }}" role="button" aria-expanded="false">
+             <i class="ri-layout-grid-line"></i>
+             <span data-key="t-tables">Role and Permission</span>
+           </a>
+         </li> @endif @if(module_permission_check('employee_section') ?? '') <li class="nav-item">
+           <a class="nav-link menu-link" href="#sidebarEmp" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarEmp">
+             <i class="ri-rocket-line"></i>
+             <span data-key="t-landing">Employee</span>
+           </a>
+           <div class="collapse menu-dropdown" id="sidebarEmp">
+             <ul class="nav nav-sm flex-column">
+               <li class="nav-item">
+                 <a href="{{ route('admin.employee-form') }}" class="nav-link" data-key="t-one-page"> Add Employee</a>
+               </li>
+               <li class="nav-item">
+                 <a href="{{ route('admin.employee') }}" class="nav-link" data-key="t-nft-landing">List </a>
+               </li>
+             </ul>
+           </div>
+         </li> @endif <li class="nav-item">
            <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
              <i class="ri-share-line"></i>
              <span data-key="t-multi-level">Multi Level</span>
