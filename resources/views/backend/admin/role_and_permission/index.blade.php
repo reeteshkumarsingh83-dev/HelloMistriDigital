@@ -123,8 +123,11 @@
                         <tr>
                           <td class="fw-medium">{{ $i }}</td>
                           <td>{{ $role->name }}</td>
-                          <td> @if($role['module_access']!=null) @foreach((array)json_decode($role['module_access']) as $m) {{str_replace('_',' ',$m)}}
-                            <br> @endforeach @endif
+                          <td> 
+                            @if($role['module_access']!=null) 
+                            @foreach((array)json_decode($role['module_access']) as $m) {{str_replace('_',' ',$m)}}
+                            <br> 
+                            @endforeach @endif
                           </td>
                           <td>{{ $role->created_at }}</td>
                           <td>
@@ -134,7 +137,7 @@
                           </td>
                           <td>
                             <div class="hstack gap-3 flex-wrap">
-                              <a href="{{ route('admin.social-media-edit',$role->id) }}" class="link-success fs-15">
+                              <a href="{{ route('admin.role-and-permission-edit',$role->id) }}" class="link-success fs-15">
                                 <i class="ri-edit-2-line"></i>
                               </a>
                               <a href="javascript:void(0);" class="link-danger fs-15">

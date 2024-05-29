@@ -27,6 +27,28 @@ class RoleAndPermission extends Controller
         return back();
     }
 
+    public function rolePermissionEdit($id){
+        $role =   Role::where('id',$id)->first();
+        return view('backend.admin.role_and_permission.edit',compact('role'));
+    }
+
+    public function rolePermissionUpdate(Request $request, $id){
+          $request->validate([
+            'name' => 'required',
+        ],[
+            'name.required'=>'Role name is required!'
+        ]);
+
+        DB::table('roles')->where(['id'=>$id])->update([
+            'name'=>$request->name,
+            'module_access'=>json_encode($request['modules']),
+            'status'=>1,
+            'updated_at'=>now()
+        ]);
+        Toastr::success('Role updated successfully!');
+        return redirect()->route('admin.role-and-permission');
+    }
+
     public function rolePermissionDelete($id){
         Role::destroy($id);
         return response()->json(); 

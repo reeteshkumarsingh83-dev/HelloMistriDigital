@@ -31,15 +31,16 @@
                 </div>
               </div>
             </div>
-            <form method="post" action="{{ route('admin.employee-save') }}" enctype="multipart/form-data">
-              @csrf
+            <form method="post" action="{{ route('admin.employee-update') }}" enctype="multipart/form-data">
+            	@csrf
+              <input type="hidden" name="employee_edit" value="{{ $employee->id }}">
               <div class="card-body">
                 <div class="live-preview">
                   <div class="row gy-4">
                     <div class="col-xxl-6 col-md-6 col-12">
                       <div>
                         <label for="valueInput" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="name" id="valueInput" value="{{ old('name') }}" placeholder="Name">
+                        <input type="text" class="form-control" name="name" id="valueInput" value="{{ $employee->name }}" placeholder="Name">
                         @error('name')
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror
@@ -48,7 +49,7 @@
                     <div class="col-xxl-6 col-md-6 col-12">
                       <div>
                         <label for="valueInput" class="form-label">Phone</label>
-                        <input type="number" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Phone">
+                        <input type="number" class="form-control" name="phone" value="{{ $employee->phone }}" placeholder="Phone">
                         @error('phone')
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror
@@ -57,7 +58,7 @@
                     <div class="col-xxl-6 col-md-6 col-12">
                       <div>
                         <label for="valueInput" class="form-label">Email</label>
-                        <input type="text" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+                        <input type="text" class="form-control" name="email" value="{{ $employee->email }}" placeholder="Email" readonly>
                         @error('email')
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror
@@ -68,9 +69,9 @@
                         <label for="valueInput" class="form-label">Role</label>
                         <select class="form-select" aria-label="Default select example" name="admin_role_id">
                          @foreach($roles as $role) 	
-            						  <option value="{{ $role->id }}">{{ $role->name }}</option>
-            				         @endforeach
-            						</select>
+						  <option value="{{ $role->id }}" @if($employee->admin_role_id == $role->id) selected @endif>{{ $role->name }}</option>
+				         @endforeach
+						</select>
                         @error('admin_role_id')
                              <small class="form-text text-danger">{{ $message }}</small>
                          @enderror
@@ -102,9 +103,11 @@
                         <label for="valueInput" class="form-label">Profile</label>
                         <div class="image_box py-2">
                           <img  src="" class="img-fluid" alt="" id="iconImage"  onerror="this.src='{{ asset("images/img2.jpg") }}'">
+                          <img  src="{{ get_upload_image('profile/'.$role->avatar) ?? ''}}" class="img-fluid" alt=""  onerror="this.src='{{ asset("images/img2.jpg") }}'" style="height: 200px; width: 300;">
                         </div>
                       </div>
                     </div>
+
                   </div>
                   <div class="text-end my-3">
                     <button type="submit" class="btn btn-success w-sm">Save</button>
@@ -117,36 +120,7 @@
     </div>
   </div>
 </div> 
-<script>
-    function PageDelete(id) {
-        swal({
-            title: "Are you sure?",
-            text:  "You will not be able to recover this data!",
-            icon:  "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                 $.ajax({
-                    url : "page/data-delete/"+id,
-                    type : "GET",
-                    data:{
-                        _token : $("input[name=_token]").val(),
-                    },
-                    success:function(respone){
-                        toastr.success('Category delete successfully');
-                        $('#uid'+id).remove();
-                    }
-                });
-            } else {
-                swal("Your product file is safe!");
-            }
-        });
-
-        return false;
-    }
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <script>
 	imgImputIcon.onchange = evt => {
 	  const [file] = imgImputIcon.files
@@ -154,33 +128,5 @@
 	    iconImage.src = URL.createObjectURL(file)
 	  }
 	}
-</script>
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-    $(document).on('change', '.statusChange', function () {
-        var id = $(this).attr("id");
-        if ($(this).prop("checked") == true) {
-            var status = 1;
-        } else if ($(this).prop("checked") == false) {
-            var status = 0;
-        }
-        $.ajax({
-            url: "{{route('admin.category-status')}}",
-            method: 'POST',
-            data: {
-                id: id,
-                "_token": "{{ csrf_token() }}",
-                status: status
-            },
-            success: function (data) {
-                if (data == 1) {
-                   toastr.success('Category status update successfully');
-                } else {
-                    toastr.success('Category status update successfully');
-                }
-            }
-        });
-    });
 </script>
 @endsection

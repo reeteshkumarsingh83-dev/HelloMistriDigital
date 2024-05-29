@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin'], function() {
     
 Route::group(['middleware' => 'admin.auth'], function(){
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::post('/logout', [AdminController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');
     
     // Web config
     Route::get('/web-config', [ConfigrationSettingController::class, 'configration'])->name('admin.configration');
@@ -125,13 +125,20 @@ Route::group(['middleware' => 'admin.auth'], function(){
      Route::get('/role-and-permission',[RoleAndPermission::class,'rolePermission'])->name('admin.role-and-permission');
      Route::post('/role-and-permission-set',[RoleAndPermission::class,'rolePermissionSet'])->name('admin.role-and-permission-set');
      Route::post('/role-and-permission-status',[RoleAndPermission::class,'rolePermissionStatus'])->name('admin.role-and-permission-status');
-
      Route::get('/role-and-permission-delete/{id}',[RoleAndPermission::class,'rolePermissionDelete'])->name('admin.role-and-permission-delete');
+     Route::get('/role-and-permission-edit/{id}',[RoleAndPermission::class,'rolePermissionEdit'])->name('admin.role-and-permission-edit');
+     Route::post('/role-and-permission-update/{id}',[RoleAndPermission::class,'rolePermissionUpdate'])->name('admin.role-and-permission-update');
 
      // employee section
      Route::get('/employee/list',[EmployeeController::class,'inedx'])->name('admin.employee');
      Route::get('/employee/form',[EmployeeController::class,'employee'])->name('admin.employee-form');
      Route::post('/employee/save',[EmployeeController::class,'employeeSave'])->name('admin.employee-save');
+
+     Route::get('/employee/edit/{id}',[EmployeeController::class,'employeeEdit'])->name('admin.employee-edit');
+     Route::post('/employee/update',[EmployeeController::class,'employeeUpdate'])->name('admin.employee-update');
+
+     Route::post('/employee/status',[EmployeeController::class,'employeeStatus'])->name('admin.employee-status');
+     Route::get('/employee/delete/{id}',[EmployeeController::class,'delete'])->name('admin.employee-delete');
 
 
 
