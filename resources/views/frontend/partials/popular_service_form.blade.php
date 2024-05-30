@@ -56,12 +56,12 @@
              <div class="sf-contact-form-wrap">
           <!--Contact Information-->
           <div class="sf-contact-form service_card_form card">
-            <form class="" method="POST" action="{{ route('web-get-service') }}">
+            <form class="" method="get" action="{{ route('web-get-service') }}">
             	<div class="sf-con-form-title text-center">
 	              <h4 class="m-b30">Find plans for your device</h4>
 	            </div>
             	@csrf
-              <input type="hidden" name="category_slug" value="{{ $category->id }}">
+              <input type="hidden" name="category_id" value="{{ $category->id }}">
               <div class="row">
                 <!-- COLUMNS 1 -->
                 <div class="col-md-12">
@@ -114,7 +114,7 @@
             $slug = Request::segment(2).'-'.$service->slug;
          @endphp
           <div class="col-lg-4 col-md-12">
-            <form method="POST" action="{{ route('web.extended-service',$slug) }}">
+            <form method="get" action="{{ route('web.extended-service',$slug) }}">
               @csrf
               <input type="hidden" name="service_slug" value="{{ $service->slug }}">
               <input type="hidden" name="category_slug" value="{{ Request::segment(2) }}">

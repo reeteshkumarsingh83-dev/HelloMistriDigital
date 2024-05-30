@@ -4,6 +4,7 @@ use App\Models\Page;
 use App\Models\Category;
 use App\Models\SocialMedia;
 use App\Models\Service;
+use App\Models\Brand;
 
   if (!function_exists('get_setting')) {
     function get_setting($key)
@@ -52,6 +53,14 @@ use App\Models\Service;
        {
           $categories = Category::orderBy('id', 'asc')->where('status',1)->get();
           return $categories;
+       }
+     }
+
+     if (!function_exists('brands')) {
+      function brands()
+       {
+          $brands = Brand::orderBy('id', 'asc')->where('status',1)->get();
+          return $brands;
        }
      }
    if (!function_exists('services')) {

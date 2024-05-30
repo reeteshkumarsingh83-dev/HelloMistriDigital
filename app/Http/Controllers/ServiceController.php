@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Service;
+use App\Models\Plan;
 
 class ServiceController extends Controller
 {
@@ -17,8 +18,14 @@ class ServiceController extends Controller
     }
 
     public function catgServiceGet(Request $request){
-         dd($request->all());
-         return view('frontend.partials.popular_service_purchase');
+         if($request->service_id){
+            $plans = Plan::where('service_id',$request->service_id)->where('brand_id',$request->brand)->get(); 
+            return view('frontend.partials.popular_service_purchase',compact('plans'));
+
+         }else{
+            $plans = Plan::where('category_id',$request->category_id)->where('brand_id',$request->brand)->get(); 
+            return view('frontend.partials.popular_service_purchase',compact('plans'));
+         }
     }
 
     public function extendedService(Request $request){

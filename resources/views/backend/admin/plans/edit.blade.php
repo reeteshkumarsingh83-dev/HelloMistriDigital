@@ -52,7 +52,7 @@
                         <label for="valueInput" class="form-label">Category</label>
                         <select class="form-select" aria-label="Default select example" name="category_id">
                           @foreach(categories()  as $category)
-                          <option value="2" @if($plan->category_id == $category->id) selected @endif>{{ $category->name }}</option>
+                          <option value="{{ $category->id }}" @if($plan->category_id == $category->id) selected @endif>{{ $category->name }}</option>
                           @endforeach
                         </select>
                         @error('category_id')
@@ -66,7 +66,7 @@
                         <label for="valueInput" class="form-label">Service</label>
                         <select class="form-select" aria-label="Default select example" name="service_id">
                           @foreach(services()  as $service)
-                          <option value="2" @if($plan->service_id == $service->id) selected @endif>{{ $service->name }}</option>
+                          <option value="{{ $service->id }}" @if($plan->service_id == $service->id) selected @endif>{{ $service->name }}</option>
                           @endforeach
                         </select>
                         @error('service_id')
@@ -88,8 +88,8 @@
                       <div>
                         <label for="valueInput" class="form-label">Time Duration/Year</label>
                         <select class="form-select" aria-label="Default select example" name="time_duration">
-              						  <option value="1" @if($plan->service_id == 1) selected @endif>1</option>
-              						  <option value="2" @if($plan->service_id == 2) selected @endif>2</option>
+              						  <option value="1" @if($plan->time_duration == 1) selected @endif>1</option>
+              						  <option value="2" @if($plan->time_duration == 2) selected @endif>2</option>
               						</select>
                         @error('time_duration')
                              <small class="form-text text-danger">{{ $message }}</small>

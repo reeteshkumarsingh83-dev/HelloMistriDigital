@@ -37,6 +37,7 @@ class PlanController extends Controller
           'price'                => 'required',
           'time_duration'        => 'required',
           'affordable_amount'    => 'required',
+          'category_id'          => 'required',
         ]);
         if($validator->fails()){
             return back()
@@ -52,11 +53,7 @@ class PlanController extends Controller
         $plans->time_duration      =     $request->time_duration;
         $plans->affordable_amount  =     $request->affordable_amount;
 
-        $benefits = [];
-        foreach($request->benefits as $key => $value) {
-            $benefits[]    =     $value;
-        }
-        $plans->benefits   =   implode(',', $benefits);
+        $plans->benefits   =   json_encode($request['benefits']);
         $plans->save();
         Toastr::success('Plan added succesfully!');
         return redirect()->route('admin.plans');

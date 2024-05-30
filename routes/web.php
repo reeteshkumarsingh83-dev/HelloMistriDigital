@@ -41,9 +41,9 @@ Route::get('page/{slug}',[PageController::class, 'SlugPage'])->name('slug-page')
 // category services
 
 Route::get('/category/{slug}', [ServiceController::class, 'CatgService'])->name('web.catg-service');
-Route::post('extended/{slug}', [ServiceController::class, 'extendedService'])->name('web.extended-service');
+Route::get('extended/{slug}', [ServiceController::class, 'extendedService'])->name('web.extended-service');
 
-Route::post('/select-your-paln', [ServiceController::class, 'catgServiceGet'])->name('web-get-service');
+Route::get('/select-your-paln', [ServiceController::class, 'catgServiceGet'])->name('web-get-service');
 
 
 

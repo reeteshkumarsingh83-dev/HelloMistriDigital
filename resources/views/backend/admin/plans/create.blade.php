@@ -49,9 +49,13 @@
                     <div class="col-xxl-6 col-md-6 col-12">
                       <div>
                         <label for="valueInput" class="form-label">Category</label>
-                        <select class="form-select" aria-label="Default select example" name="category_id">
+                        <select class="form-select" aria-label="Default select example" name="category_id" id="category_id">
+                          <option value="">--select--</option>
                           @foreach(categories()  as $category)
-                          <option value="2">{{ $category->name }}</option>
+                          <option value="{{ $category->id }}">{{ $category->name }}</option>
+                          @php
+                            $brands  = \App\Models\Brand::where('category_id',$category->id)->get();
+                          @endphp
                           @endforeach
                         </select>
                         @error('category_id')
@@ -62,10 +66,22 @@
 
                     <div class="col-xxl-6 col-md-6 col-12">
                       <div>
+                        <label for="valueInput" class="form-label">Category</label>
+                        <select class="form-select" aria-label="Default select example" name="brand_id" id="brand_id">
+                          <option value="">--select--</option>
+                        </select>
+                        @error('brand_id')
+                             <small class="form-text text-danger">{{ $message }}</small>
+                         @enderror
+                      </div>
+                    </div>
+
+                    <div class="col-xxl-4 col-md-4 col-12">
+                      <div>
                         <label for="valueInput" class="form-label">Service</label>
                         <select class="form-select" aria-label="Default select example" name="service_id">
                           @foreach(services()  as $service)
-                          <option value="2">{{ $service->name }}</option>
+                          <option value="{{ $service->id }}">{{ $service->name }}</option>
                           @endforeach
                         </select>
                         @error('service_id')
@@ -158,4 +174,20 @@
   }
   
   </script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+jQuery (document).ready(function(){
+  jQuery('#category_id').change(function(){
+    let cid = jQuery(this).val();
+    jQuery.ajax({
+      url:'category-brand',
+      type:'get',
+      data:'cid='+cid+'&_token={{ csrf_token() }}',
+      success:function (result) {
+        jQuery('#brand_id').html(result);
+      }
+    });
+  });
+});
+</script>
 @endsection

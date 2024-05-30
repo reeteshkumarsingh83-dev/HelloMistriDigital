@@ -71,6 +71,7 @@ Route::group(['middleware' => 'admin.auth'], function(){
     Route::get('/sub-category',[CategoryController::class,'Subcategory'])->name('admin.sub-category');
     Route::post('/sub-category',[CategoryController::class,'SubcategorySave'])->name('admin.sub-category-save');
     Route::post('/category-status',[CategoryController::class,'status'])->name('admin.category-status');
+    Route::get('/category-brand',[CategoryController::class,'getBrand'])->name('admin.category-brand');
 
    
     // Brand 

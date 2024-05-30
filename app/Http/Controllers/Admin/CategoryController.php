@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use App\Models\Category;
 use Validator;
+use App\Models\Brand;
 
 class CategoryController extends Controller
 {
@@ -132,6 +133,16 @@ class CategoryController extends Controller
             $data = $request->status;
             return response()->json($data);
         }
+    }
+
+    public function getBrand(Request $request){
+       $cid = $request->get('cid');
+       $brands   = Brand::orderBy('id','desc')->where('category_id',$cid)->get();
+       $html = '';
+       foreach($brands as $brand){
+             $html = '<option value="'.$brand->id.'">'.$brand->name.'</option>';
+             print($html);
+       }
     }
 
 

@@ -56,7 +56,7 @@
              <div class="sf-contact-form-wrap">
           <!--Contact Information-->
           <div class="sf-contact-form service_card_form card">
-            <form class="" method="POST" action="{{ route('web-get-service') }}">
+            <form class="" method="get" action="{{ route('web-get-service') }}">
             	<div class="sf-con-form-title text-center">
 	              <h4 class="m-b30">Find plans for your device</h4>
 	            </div>
