@@ -54,7 +54,7 @@
                                                 <td>{{ $banner->title }}</td>
                                                 <td>{{ $banner->url }}</td>
                                                 <td><i class="ri-checkbox-circle-line align-middle text-success"></i> 
-                                                <img src="{{ get_upload_image('banners/'.$banner->banner) ?? ''}}" class="get_upload_image" alt="image">
+                                                <img src="{{ get_upload_image('banners/'.$banner->banner) ?? ''}}" class="get_upload_image" onerror="this.src='{{ asset("images/img2.jpg") }}'" alt="image">
                                                 </td>
                                                 <td>
                                                     <div class="form-check form-switch">

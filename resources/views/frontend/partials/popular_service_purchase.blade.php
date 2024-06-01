@@ -33,8 +33,9 @@
            @endphp -->
           <div class="col-lg-4 col-md-12">
               <div class="sf-contact-form service_card_form card">
-                <form class="" method="" action="">
+                <form class="" method="POST" action="{{ route('payment-address') }}">
                   <div class="sf-con-form-title text-center">
+                    <input type="hidden" name="plan_id" value="{{ $plan->id }}">
                     <h4 class="m-b30">{{ $plan->title }}</h4>
                   </div> 
                   @csrf 

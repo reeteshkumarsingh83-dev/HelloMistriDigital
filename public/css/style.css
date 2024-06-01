@@ -27778,6 +27778,10 @@ input:focus .search-preview{
 img {
   height: auto;
 }
+.service_card_form{
+  padding: 15px!important;
+  margin-bottom: 15px;
+}
 }
 
 @media (min-width: 575px) and (max-width: 900px) {
@@ -27821,3 +27825,23 @@ img {
 .sf-footer-bottom-section img{
   height: 60px;
 }
+
+.aon-why-choose2-box{
+       background: none;
+       padding: 0px 52px 27px 52px;
+  }
+  .sf-contact-form .form-control{
+    background-color: transparent;
+    border-radius: 5px; 
+       border: 2px solid #c2c8d7; 
+       height: 50px;
+  }
+  .best_service_plan{
+    padding: 30px 18px 30px 18px;
+  }
+ @media (min-width: 300px) and (max-width: 575px) {
+    .aon-why-choose2-box{
+       background: none;
+       padding: 0px!important;
+  }
+  }

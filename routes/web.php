@@ -45,6 +45,12 @@ Route::get('extended/{slug}', [ServiceController::class, 'extendedService'])->na
 
 Route::get('/select-your-paln', [ServiceController::class, 'catgServiceGet'])->name('web-get-service');
 
+Route::post('/payment-address', [ServiceController::class, 'paymentAddress'])->name('payment-address');
+
+Route::post('/payment-address-send', [ServiceController::class, 'paymentAddressSend'])->name('payment-address-send');
+
+Route::get('/select-payment-mode', [ServiceController::class, 'selectPaymentMode'])->name('select-payment-mode');
+
 
 
 

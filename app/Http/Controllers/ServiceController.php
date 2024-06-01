@@ -35,4 +35,12 @@ class ServiceController extends Controller
         $brands   = Brand::where('category_id',$category->id)->get();
         return view('frontend.partials.popular_service',compact('category','brands','services'));
     }
+
+    public function paymentAddress(Request $request){
+        return view('frontend.partials.payment_address');
+    }
+
+    public function paymentAddressSend(Request $request){
+        dd($request->all());
+    }
 }
